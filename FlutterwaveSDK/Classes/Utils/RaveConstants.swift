@@ -13,7 +13,7 @@ class RaveConstants: NSObject {
 
     class func baseURL () -> String{
         //return "https://ravesandbox.azurewebsites.net"
-        return "https://rave-api-v2.herokuapp.com"
+        return "https://api.ravepay.co"
     }
     class func liveBaseURL() -> String{
        // return "https://raveapi.azurewebsites.net"
@@ -25,7 +25,7 @@ class RaveConstants: NSObject {
         
     }
     
-    static let flutterWaveVersion = "1.3.1"
+    static let flutterWaveVersion = "1.3.2"
     static let flutterColor = UIColor(hex: "#F5A623")
     
     static let bankStyle = [(code:"044",color:"#143f89",image:"rave_access2"),
@@ -69,7 +69,7 @@ class RaveConstants: NSObject {
                                         """),
                                     ("AIRTEL","","")]
     
-    static let zambianNetworks = ["MTN"]
+    static let zambianNetworks = ["AIRTEL","MTN","ZAMTEL"]
     
 
  
