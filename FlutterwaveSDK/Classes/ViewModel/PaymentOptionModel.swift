@@ -16,7 +16,9 @@ public enum PaymentOption {
   case ussd
   case voucherPayment
   case barter
+  case payPal
 }
+
 
 
 

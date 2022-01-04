@@ -15,6 +15,8 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		D8384699271018F5006C2E0A /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8384698271018F5006C2E0A /* SuccessViewController.swift */; };
+		D838469B27101912006C2E0A /* SuccessViewController+setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D838469A27101912006C2E0A /* SuccessViewController+setup.swift */; };
 		D88ECD9525277ADE00A8E8F8 /* Viewcontroller+setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88ECD9425277ADE00A8E8F8 /* Viewcontroller+setup.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +49,8 @@
 		929E459DD588406A5AD53E08 /* Pods-FlutterwaveSDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlutterwaveSDK_Tests.release.xcconfig"; path = "Target Support Files/Pods-FlutterwaveSDK_Tests/Pods-FlutterwaveSDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B4FFEF64F0A9168C7AADB142 /* Pods_FlutterwaveSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlutterwaveSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C305DF937664824597D85E4E /* Pods-FlutterwaveSDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlutterwaveSDK_Tests.debug.xcconfig"; path = "Target Support Files/Pods-FlutterwaveSDK_Tests/Pods-FlutterwaveSDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		D8384698271018F5006C2E0A /* SuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessViewController.swift; sourceTree = "<group>"; };
+		D838469A27101912006C2E0A /* SuccessViewController+setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SuccessViewController+setup.swift"; sourceTree = "<group>"; };
 		D860CBD3253EF59D003FDEDD /* FlutterwaveSDK_Example.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FlutterwaveSDK_Example.entitlements; sourceTree = "<group>"; };
 		D88ECD9425277ADE00A8E8F8 /* Viewcontroller+setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Viewcontroller+setup.swift"; sourceTree = "<group>"; };
 		DDB2EED5920F48D190963980 /* FlutterwaveSDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = FlutterwaveSDK.podspec; path = ../FlutterwaveSDK.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -97,6 +101,7 @@
 		607FACD21AFB9204008FA782 /* Example for FlutterwaveSDK */ = {
 			isa = PBXGroup;
 			children = (
+				D8384697271018CB006C2E0A /* Views */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				D88ECD9425277ADE00A8E8F8 /* Viewcontroller+setup.swift */,
@@ -153,6 +158,15 @@
 				929E459DD588406A5AD53E08 /* Pods-FlutterwaveSDK_Tests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D8384697271018CB006C2E0A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D8384698271018F5006C2E0A /* SuccessViewController.swift */,
+				D838469A27101912006C2E0A /* SuccessViewController+setup.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		E254619BF3C2593FB69EC74F /* Frameworks */ = {
@@ -355,8 +369,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D838469B27101912006C2E0A /* SuccessViewController+setup.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				D88ECD9525277ADE00A8E8F8 /* Viewcontroller+setup.swift in Sources */,
+				D8384699271018F5006C2E0A /* SuccessViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -510,13 +526,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FlutterwaveSDK_Example.entitlements;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = YL4C3AS383;
 				INFOPLIST_FILE = FlutterwaveSDK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.3.2;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.paypal.flutterwave;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -531,13 +548,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FlutterwaveSDK_Example.entitlements;
-				DEVELOPMENT_TEAM = 77G456H6NP;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = YL4C3AS383;
 				INFOPLIST_FILE = FlutterwaveSDK/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.3.1;
+				MARKETING_VERSION = 1.3.2;
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.paypal.flutterwave;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

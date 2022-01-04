@@ -26,10 +26,12 @@ extension ViewController {
         view.addSubview(underLineView)
         view.addSubview(launchButton)
         
+        
+        
         NSLayoutConstraint.activate([
             flutterLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
             flutterLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-             flutterLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            flutterLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             
             exampleLabel.topAnchor.constraint(equalTo: flutterLabel.bottomAnchor, constant: 5),
             exampleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
@@ -43,7 +45,7 @@ extension ViewController {
             launchButton.heightAnchor.constraint(equalToConstant: 50),
             launchButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             launchButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20)
-  
+            
         ])
     }
     
@@ -58,7 +60,7 @@ extension ViewController {
         flutterLabel.attributedText = attributedTitle
         
         flutterLabel.numberOfLines = 0
-       
+        
         flutterLabel.translatesAutoresizingMaskIntoConstraints = false
         flutterLabel.adjustsFontSizeToFitWidth = true
     }
@@ -86,7 +88,7 @@ extension ViewController {
         launchButton.heightAnchor.constraint(equalToConstant: 57).isActive = true
         launchButton.translatesAutoresizingMaskIntoConstraints = false
         launchButton.addTarget(self, action: #selector(showExample), for: .touchUpInside)
- 
+        
     }
 }
 

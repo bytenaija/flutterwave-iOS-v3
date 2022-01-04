@@ -70,12 +70,17 @@ extension FlutterwavePayViewController {
                 self.showWebView(url: response.data?.authurl,ref:response.data?.flwRef)
             }
         } ).disposed(by: disposeBag)
+        
+        setUpMoveToWebView(baseViewModel: PaypalViewModel.sharedViewModel, action: {url,ref in
+            self.showWebView(url: url,ref:ref)
+        })
     }
     func setUpLoading(){
         setUpLoadingObservers(baseViewModel: PaymentServicesViewModel.sharedViewModel)
         setUpLoadingObservers(baseViewModel: MobileMoneyViewModel.sharedViewModel)
         setUpLoadingObservers(baseViewModel: BankViewModel.sharedViewModel)
         setUpLoadingObservers(baseViewModel: CardViewModel.sharedViewModel)
+        setUpLoadingObservers(baseViewModel: PaypalViewModel.sharedViewModel)
     }
     
     
@@ -166,6 +171,12 @@ extension FlutterwavePayViewController {
             }
         }).disposed(by: disposableBag)
         
+        PaypalViewModel.sharedViewModel.error.subscribe(onNext: { errorMessage in
+            DispatchQueue.main.async {
+                self.flutterwaveCardClient.error!(errorMessage,nil)
+            }
+        }).disposed(by: disposableBag)
+        
     }
     
     
@@ -182,6 +193,8 @@ extension FlutterwavePayViewController {
         case .zambiaMoney:
             print("")
         case .francophoneMoney:
+            print("")
+        case .paypal:
             print("")
         }
     }

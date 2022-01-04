@@ -91,5 +91,17 @@ extension FlutterwavePayViewController {
         }).disposed(by: disposableBag)
     }
     
+    
+    func configurePaypal(){
+        payPalView.amountLabel.text = self.amount
+        payPalView.currencyLabel.text = (FlutterwaveConfig.sharedConfig().currencyCode)
+        payPalView.emailLabel.text = FlutterwaveConfig.sharedConfig().email
+        payPalView.payButton.rx.tap.subscribe(onNext: {
+           
+            PaypalViewModel.sharedViewModel.paypal(amount: self.amount.orEmpty())
+        }).disposed(by: disposableBag)
+        
+    }
+    
 }
 

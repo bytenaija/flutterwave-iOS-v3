@@ -106,6 +106,11 @@ let launchButton = UIButton(type: .system)
 }
  
 ```
+
+## ❗️PCI-DSS Compliance required for  Card Payments method!
+
+
+Note that you can only use this integration option if you have the required PCS-DSS compliance certificate.
  
 ## Contributing
 Contributions of any kind are welcomed, including bug fixes, new features, and documentation improvements. The first thing to do is to please open an issue describing what you want to build and we will discuss how to move forward. Otherwise, go ahead and open a pull request for minor changes such as typo fixes and one liners.

@@ -8,6 +8,8 @@
 
 import FlutterwaveSDK
 import UIKit
+import RxCocoa
+import RxSwift
 
 class ViewController: UIViewController, FlutterwavePayProtocol {
     func onDismiss() {
@@ -17,6 +19,7 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
     
     func tranasctionSuccessful(flwRef: String?, responseData: FlutterwaveDataResponse?) {
         print("DATA Returned \(responseData?.flwRef ?? "Failed to return data")")
+        
         
     }
     
@@ -59,7 +62,6 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpConstraintsAndProperties()
-        showExample()
     }
     
 }
@@ -69,3 +71,7 @@ struct MetaValueDetails  {
     var paymentDetails:String
     var recieptId:String
 }
+
+
+
+

@@ -182,7 +182,6 @@ class FlutterwaveCardClient{
             guard let _ = FlutterwaveConfig.sharedConfig().transcationRef else {
                 fatalError("transactionRef is missing")
             }
-            //            print("FUNCTION CARD \(cardNumber.orEmpty())")
             var param:[String:Any] = ["PBFPubKey":pubkey ,
                                       "card_number":cardNumber ?? "",
                                       "cvv":cvv ?? "",
