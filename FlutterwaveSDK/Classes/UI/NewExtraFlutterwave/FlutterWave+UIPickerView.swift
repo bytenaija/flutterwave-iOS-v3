@@ -122,7 +122,7 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
         //selectBankAccountView
         UIView.animate(withDuration: 0.6, animations: {
             self.accountFormContainer.alpha = 1
-            self.accountFormContainer.backgroundColor = UIColor(hex: "#f2f2f2")
+//            self.accountFormContainer.backgroundColor = UIColor(hex: "#f2f2f2")
             self.accountFormContainer.accountImageView.image = UIImage(named: imageName,in: Bundle.getResourcesBundle(), compatibleWith: nil)
             self.selectBankAccountView.alpha = 0
         }) { (succeeded) in

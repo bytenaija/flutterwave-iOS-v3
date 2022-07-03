@@ -207,8 +207,11 @@ extension FlutterwavePayViewController {
             .map { String($0.prefix(6)) }
             .bind(to: accountOtpContentContainer.otpTextField.rx.text)
             .disposed(by: disposeBag)
+         accountFormContainer.alpha = 0
         self.accountOtpContentContainer.isHidden = false
-        self.accountFormContainer.alpha = 0
+        
+        
+      
         accountOtpContentContainer.otpMessage.text = message
         
         accountOtpContentContainer.otpButton.rx.tap.subscribe(onNext: {
@@ -222,7 +225,7 @@ extension FlutterwavePayViewController {
         }).disposed(by: disposableBag)
         
         UIView.animate(withDuration: 0.6, animations: {
-            self.accountOtpContentContainer.alpha = 1
+            self.accountOtpContentContainer.alpha = 0
             self.accountFormContainer.alpha = 0
             self.selectBankAccountView.alpha = 0
         }) { (success) in

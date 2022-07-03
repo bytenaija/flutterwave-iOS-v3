@@ -9,7 +9,7 @@
 struct PaypalRequest: Codable {
     let txRef, amount, currency, country: String?
     let email, phoneNumber, fullname, clientIP: String?
-    let redirectURL = "https://fw-redirect-ios-jimioniay.vercel.app/"
+    let redirectURL: String?
     let deviceFingerprint, billingAddress, billingCity, billingZip: String?
     let billingState, billingCountry, shippingName, shippingAddress: String?
     let shippingCity, shippingZip, shippingState, shippingCountry: String?

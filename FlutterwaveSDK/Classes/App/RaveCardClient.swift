@@ -240,18 +240,21 @@ class FlutterwaveCardClient{
             
             if replaceData {
                 bodyParam = param
+            
             }
             if isRetryCharge{
                 if let retryValue = self.retryChargeValue{
                     bodyParam?.merge(["retry_charge":retryValue])
                 }
             }
-            let jsonString  = bodyParam!.jsonStringify()
-            //            print("JSON SENT \(jsonString)")
+          
+
+            let jsonString  = bodyParam?.jsonStringify()
+//                        print("JSON SENT \(jsonString)")
             let secret = FlutterwaveConfig.sharedConfig().encryptionKey!
-            let data =  TripleDES.encrypt(string: jsonString, key:secret)
+            let data =  TripleDES.encrypt(string: jsonString ?? "", key:secret)
             let base64String = data?.base64EncodedString()
-            
+
             CardViewModel.sharedViewModel.saveCard = saveCard
             PaymentServicesViewModel.sharedViewModel.chargeCard(client: base64String!)
             
@@ -336,3 +339,4 @@ class FlutterwaveCardClient{
     
     
 }
+

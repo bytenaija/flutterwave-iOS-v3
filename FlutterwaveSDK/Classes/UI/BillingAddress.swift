@@ -166,7 +166,7 @@ class BillingAddress: UIView {
     lazy var goBackButton: UIButton = {
            let button = UIButton(type: .system)
            button.setTitle("GO BACK", for: .normal)
-           button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(UIColor.setColor(lightColor: .black, darkColor: .white), for: .normal)
            button.backgroundColor = UIColor.clear
            button.layer.cornerRadius = 0
            button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)

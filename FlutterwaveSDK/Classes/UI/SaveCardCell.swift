@@ -12,7 +12,8 @@ class SaveCardCell: UITableViewCell {
    
     lazy var contentContainer: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+//        view.backgroundColor = .white
+        view.backgroundColor = UIColor(hex: "#F2F2F2")
         view.clipsToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view

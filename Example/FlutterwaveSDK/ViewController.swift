@@ -20,6 +20,28 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
     func tranasctionSuccessful(flwRef: String?, responseData: FlutterwaveDataResponse?) {
         print("DATA Returned \(responseData?.flwRef ?? "Failed to return data")")
         
+        let vc = SuccessViewController()
+        let amount: String = String (responseData?.chargedAmount ?? 0.0)
+        let currency = responseData?.currency ?? ""
+        let fee: String = String (responseData?.merchantFee ?? 0.0)
+        vc.fee = fee
+        vc.amount =  (currency + " " + amount)
+        vc.reference = responseData?.flwRef ?? ""
+        vc.paymentType = responseData?.paymentType ?? ""
+        
+        let date = Date()
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let formattedDate = format.string(from: date)
+        print(formattedDate)
+        vc.date = formattedDate
+        
+        if #available(iOS 13.0, *) {
+            vc.isModalInPresentation = true
+        } else {
+            // Fallback on earlier versions
+        }
+        self.present(vc, animated: true)
         
     }
     
@@ -45,7 +67,7 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
                    config.transcationRef = "[TRANSACTION REF]" // This is a unique reference, unique to the particular transaction being carried out. It is generated when it is not provided by the merchant for every transaction.
                    config.firstName = "[USER'S FIRST NAME]" // This is the customers first name.
                    config.lastName = "[USER'S SECOND NAME]" //This is the customers last name.
-                   config.meta = [["metaname":"iOS-SDK-v3", "metavalue": MetaValueDetails(paymentDetails: "", recieptId: "")]] //This is used to include additional payment information
+                    config.meta = [["metavalue":["paymentDetails":"", "recieptId":""] , "metaname": "iOS-SDK-v3"]] //This is used to include additional payment information
                    config.narration = "simplifying payments for endless possibilities"
                    config.publicKey = "[PUB_KEY]" //Public key
                    config.encryptionKey = "[ENCRYPTION_KEY]" //Encryption key
@@ -57,6 +79,7 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
                    self.present(nav, animated: true)
                    
                }
+
     
     
     override func viewDidLoad() {
@@ -65,13 +88,5 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
     }
     
 }
-
-
-struct MetaValueDetails  {
-    var paymentDetails:String
-    var recieptId:String
-}
-
-
 
 

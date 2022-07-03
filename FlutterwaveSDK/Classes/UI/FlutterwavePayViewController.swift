@@ -659,8 +659,8 @@ public class FlutterwavePayViewController: BaseViewController {
         closeButton.addTarget(self, action: #selector(closeView), for: .touchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: closeButton)
         
-        //        self.tableView.backgroundColor = UIColor(hex: "#F2F2F2")
-        self.tableView.backgroundColor = UIColor.white
+//        self.tableView.backgroundColor = UIColor(hex: "#F2F2F2")
+//        self.tableView.backgroundColor = UIColor.white
         self.tableView.tableFooterView = UIView(frame: .zero)
         configureView()
         configureDebitCardView()
@@ -2012,15 +2012,15 @@ public class FlutterwavePayViewController: BaseViewController {
     func cardPayAction(){
         self.view.endEditing(true)
         flutterwaveCardClient.cardNumber = self.debitCardView.cardNumberTextField.text?.components(separatedBy:CharacterSet.decimalDigits.inverted).joined()
-        
+//        
         //        print("SDK VALUE \(flutterwaveCardClient.cardNumber.orEmpty())")
         flutterwaveCardClient.cvv = self.debitCardView.cardCVV.text
-        
+//        
         let seperateCardExpiry = debitCardView.cardExpiry.text?.split(separator: "/")
-        
+//        
         flutterwaveCardClient.expMonth = String((seperateCardExpiry![0]))
         flutterwaveCardClient.expYear = String((seperateCardExpiry![1]))
-        
+//        
         flutterwaveCardClient.amount = self.amount
         flutterwaveCardClient.chargeCard(replaceData: true)
         

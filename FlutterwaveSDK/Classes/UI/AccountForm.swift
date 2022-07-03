@@ -121,7 +121,7 @@ class AccountForm: UIView {
     lazy var goBack: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("GO BACK", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(UIColor.setColor(lightColor: .black, darkColor: .white), for: .normal)
         button.layer.cornerRadius = 4
         button.heightAnchor.constraint(equalToConstant: 57).isActive = true
         button.translatesAutoresizingMaskIntoConstraints = false

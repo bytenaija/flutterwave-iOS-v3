@@ -46,7 +46,7 @@ class PaypalView: UIView {
     lazy var instructionLabel: UILabel = {
         let label = UILabel()
         label.text = "You will be redirected to Paypal to complete this payment."
-        label.textColor = UIColor.black
+//        label.textColor = UIColor.black
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
         label.textAlignment = .center

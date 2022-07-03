@@ -23,6 +23,7 @@ class SaveCardViewController: UIViewController {
     lazy var saveCardTable:UITableView = {
         let table = UITableView()
         table.backgroundColor = .clear
+    
         table.translatesAutoresizingMaskIntoConstraints = false
         table.separatorStyle = .none
         return table

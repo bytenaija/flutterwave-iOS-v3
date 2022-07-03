@@ -208,6 +208,7 @@ public extension Dictionary{
             }
             catch
             {
+                print("Catch level\(error)")
             }
         
         return str
@@ -415,3 +416,17 @@ public extension UIColor {
     }
 }
 
+
+extension UIColor {
+    
+   static func setColor(lightColor: UIColor, darkColor: UIColor) -> UIColor {
+        if #available(iOS 13, *) {
+            return UIColor{ (traitCollection) -> UIColor in
+                return traitCollection.userInterfaceStyle == .light ? lightColor : darkColor
+            }
+        } else {
+            return lightColor
+        }
+    }
+    
+}

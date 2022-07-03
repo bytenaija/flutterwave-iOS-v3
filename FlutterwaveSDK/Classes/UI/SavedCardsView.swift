@@ -29,7 +29,7 @@ class SavedCardsView: UIView {
     
     lazy var useAnotherCardButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(UIColor.setColor(lightColor: .black, darkColor: .white), for: .normal)
         button.setTitle("USE ANOTHER CARD", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         button.translatesAutoresizingMaskIntoConstraints = false
