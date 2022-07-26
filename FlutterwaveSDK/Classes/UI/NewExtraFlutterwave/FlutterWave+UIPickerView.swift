@@ -355,7 +355,7 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
         flutterwaveCardClient.isSaveCardCharge = "1"
         flutterwaveCardClient.saveCardPayment = "saved-card"
         flutterwaveCardClient.amount = self.amount
-        flutterwaveCardClient.saveCardCharge()
+//        flutterwaveCardClient.saveCardCharge()
     }
     @objc func pinContinueButtonTapped(){
         self.pinAction()

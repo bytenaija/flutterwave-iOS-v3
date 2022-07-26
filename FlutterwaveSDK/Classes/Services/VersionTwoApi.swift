@@ -19,7 +19,7 @@ enum VersionTwoServicesApi{
 
 extension VersionTwoServicesApi:EndpointType{
     var stagingURL: URL {
-         return URL(string: "https://rave-api-v2.herokuapp.com/")!
+         return URL(string: "https://api.ravepay.co/")!
     }
    
     var baseURL: URL {

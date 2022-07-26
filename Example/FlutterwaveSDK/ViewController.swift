@@ -34,7 +34,6 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
     
     
     @objc func showExample(){
-
                    let config = FlutterwaveConfig.sharedConfig()
                    config.paymentOptionsToExclude = []
                    config.currencyCode = "NGN" // This is the specified currency to charge in.
@@ -57,8 +56,7 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
 
                }
 
- 
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpConstraintsAndProperties()
