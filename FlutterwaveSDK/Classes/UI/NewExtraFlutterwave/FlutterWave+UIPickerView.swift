@@ -28,11 +28,15 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
     @objc func textFieldDidChange(textField: UITextField) {
         if (textField == pinViewContainer.hiddenPinTextField){
             pinViewContainer.pins.forEach { (item) in
-                item.backgroundColor = .white
+                item.backgroundColor = .lightGray.withAlphaComponent(0.8)
             }
             
             for (index,_) in (textField.text?.enumerated())!{
                 pinViewContainer.pins[index].backgroundColor = .gray
+//                pinViewContainer.pins[index].layer.borderColor = UIColor.black.cgColor
+                pinViewContainer.pins[index].layer.borderColor = UIColor(hex: "#F5A623").cgColor
+                pinViewContainer.pins[index].layer.borderWidth = 1.5
+                
             }
             if ((textField.text?.count)! == 4){
                 textField.resignFirstResponder()
@@ -49,6 +53,7 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
             }
         }
     }
+    
     
     
     

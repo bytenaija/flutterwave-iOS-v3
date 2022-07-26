@@ -7,6 +7,7 @@
 //
 import UIKit
 
+
 class PinView: UIView {
     
     lazy var titleInfo: UILabel = {
@@ -24,7 +25,7 @@ class PinView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.heightAnchor.constraint(equalToConstant: 40).isActive = true
         view.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        view.backgroundColor = .white
+        view.backgroundColor = .lightGray
         return view
     }
     

@@ -20,29 +20,6 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
     func tranasctionSuccessful(flwRef: String?, responseData: FlutterwaveDataResponse?) {
         print("DATA Returned \(responseData?.flwRef ?? "Failed to return data")")
         
-        let vc = SuccessViewController()
-        let amount: String = String (responseData?.chargedAmount ?? 0.0)
-        let currency = responseData?.currency ?? ""
-        let fee: String = String (responseData?.merchantFee ?? 0.0)
-        vc.fee = fee
-        vc.amount =  (currency + " " + amount)
-        vc.reference = responseData?.flwRef ?? ""
-        vc.paymentType = responseData?.paymentType ?? ""
-        
-        let date = Date()
-        let format = DateFormatter()
-        format.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let formattedDate = format.string(from: date)
-        print(formattedDate)
-        vc.date = formattedDate
-        
-        if #available(iOS 13.0, *) {
-            vc.isModalInPresentation = true
-        } else {
-            // Fallback on earlier versions
-        }
-        self.present(vc, animated: true)
-        
     }
     
     func tranasctionFailed(flwRef: String?, responseData: FlutterwaveDataResponse?) {
@@ -57,7 +34,7 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
     
     
     @objc func showExample(){
-                   
+
                    let config = FlutterwaveConfig.sharedConfig()
                    config.paymentOptionsToExclude = []
                    config.currencyCode = "NGN" // This is the specified currency to charge in.
@@ -77,10 +54,10 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
                    controller.amount = "[AMOUNT]" // This is the amount to be charged.
                    controller.delegate = self
                    self.present(nav, animated: true)
-                   
+
                }
 
-    
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
