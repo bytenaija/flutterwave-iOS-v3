@@ -16,11 +16,15 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
     
     func cardSelected(card: SavedCard?) {
         flutterwaveCardClient.selectedCard = card
-        if let card =  flutterwaveCardClient.selectedCard{
-            //LoadingHUD.shared().show()
-            CardViewModel.sharedViewModel.sendCardOtp(cardHash: card.cardHash ?? "")
-            // flutterwaveCardClient.sendOTP(card: card)
-        }
+//        if let card =  flutterwaveCardClient.selectedCard{
+//            CardViewModel.sharedViewModel.sendCardOtp(cardHash: card.cardHash ?? "")
+             LoadingHUD.shared().show()
+//                 flutterwaveCardClient.otp = "12345"
+                 flutterwaveCardClient.isSaveCardCharge = "1"
+                 flutterwaveCardClient.saveCardPayment = "saved-card"
+                 flutterwaveCardClient.amount = self.amount
+                 flutterwaveCardClient.saveCardCharge()
+//        }
     }
     
     
@@ -264,27 +268,27 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
     }
     
     func showOTP(message:String, flwRef:String, otpType:OTPType){
-        self.otpContentContainer.isHidden = false
-        self.accountOtpContentContainer.isHidden = false
+//        self.otpContentContainer.isHidden = true
+//        self.accountOtpContentContainer.isHidden = true
         switch otpType {
         case .savedCard:
-            
-            otpContentContainer.alpha = 0
-            otpContentContainer.otpMessage.text = message
-            otpContentContainer.otpButton.removeTarget(self, action: #selector(accountOTPButtonTapped), for: .touchUpInside)
-            otpContentContainer.otpButton.removeTarget(self, action: #selector(cardOTPButtonTapped), for: .touchUpInside)
-            otpContentContainer.otpButton.addTarget(self, action: #selector(saveCardOTPButtonTapped), for: .touchUpInside)
-            
-            UIView.animate(withDuration: 0.6, animations: {
-                self.otpContentContainer.alpha = 1
-                self.pinViewContainer.alpha = 0
-                self.debitCardView.alpha = 0
-                self.saveCardContainer.alpha = 0
-            }) { (success) in
-                self.pinViewContainer.isHidden = true
-                self.debitCardView.isHidden = true
-                self.saveCardContainer.isHidden = true
-            }
+            print("")
+//            otpContentContainer.alpha = 0
+//            otpContentContainer.otpMessage.text = message
+//            otpContentContainer.otpButton.removeTarget(self, action: #selector(accountOTPButtonTapped), for: .touchUpInside)
+//            otpContentContainer.otpButton.removeTarget(self, action: #selector(cardOTPButtonTapped), for: .touchUpInside)
+//            otpContentContainer.otpButton.addTarget(self, action: #selector(saveCardOTPButtonTapped), for: .touchUpInside)
+//
+//            UIView.animate(withDuration: 0.6, animations: {
+//                self.otpContentContainer.alpha = 1
+//                self.pinViewContainer.alpha = 0
+//                self.debitCardView.alpha = 0
+//                self.saveCardContainer.alpha = 0
+//            }) { (success) in
+//                self.pinViewContainer.isHidden = true
+//                self.debitCardView.isHidden = true
+//                self.saveCardContainer.isHidden = true
+//            }
             
         case .card:
             
@@ -346,15 +350,15 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
     }
     
     @objc func saveCardOTPButtonTapped(){
-        self.view.endEditing(true)
-        guard let otp = otpContentContainer.otpTextField.text, otp != ""  else {
-            return
-        }
-        // LoadingHUD.shared().show()
-        flutterwaveCardClient.otp = otp
-        flutterwaveCardClient.isSaveCardCharge = "1"
-        flutterwaveCardClient.saveCardPayment = "saved-card"
-        flutterwaveCardClient.amount = self.amount
+//        self.view.endEditing(true)
+//        guard let otp = otpContentContainer.otpTextField.text, otp != ""  else {
+//            return
+//        }
+//        // LoadingHUD.shared().show()
+////        flutterwaveCardClient.otp = otp
+//        flutterwaveCardClient.isSaveCardCharge = "1"
+//        flutterwaveCardClient.saveCardPayment = "saved-card"
+//        flutterwaveCardClient.amount = self.amount
 //        flutterwaveCardClient.saveCardCharge()
     }
     @objc func pinContinueButtonTapped(){

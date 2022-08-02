@@ -2,9 +2,8 @@
 //  RaveCardClient.swift
 //  GetBarter
 //
-//  Created by Olusegun Solaja on 14/08/2018.
-//  Copyright © 2018 Olusegun Solaja. All rights reserved.
-//
+//  Created by texyz on 10/02/2020.
+//  Copyright (c) 2020 texyz. All rights reserved.
 
 import Foundation
 import UIKit
@@ -77,13 +76,14 @@ class FlutterwaveCardClient{
                                       "amount":amount ?? "",
                                       "firstname":FlutterwaveConfig.sharedConfig().firstName ?? "",
                                       "lastname": FlutterwaveConfig.sharedConfig().lastName ?? "",
+                                      "otp":"123456",
                                       "txRef": FlutterwaveConfig.sharedConfig().transcationRef!]
             if let saveCard = isSaveCardCharge{
                 param.merge(["is_saved_card_charge":saveCard])
             }
-            if let _otp = otp{
-                param.merge(["otp":_otp])
-            }
+//            if let _otp = otp{
+//                param.merge(["otp":_otp])
+//            }
             if let saveCardType = saveCardPayment{
                 param.merge(["payment_type":saveCardType])
             }
@@ -135,22 +135,20 @@ class FlutterwaveCardClient{
             
             let jsonString  = param.jsonStringify()
             
+            print("This is the payload before encryption\(jsonString)")
+            
             let secret = FlutterwaveConfig.sharedConfig().encryptionKey!
             let data =  TripleDES.encrypt(string: jsonString, key:secret)
             let base64String = data?.base64EncodedString()
             
             
-//            let reqbody = [
-//                "PBFPubKey": pubkey,
-//                "client": base64String!, // Encrypted $data payload here.
-//                "alg": "3DES-24"
-//            ]
-//            print("first-of-all")
-//            print(reqbody)
             CardViewModel.sharedViewModel.chargeSavedCard(client: base64String!)
+           
 
         }
     }
+    
+    
     //MARK: Charge Card
     public func chargeCard(replaceData:Bool = false){
         if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{
