@@ -1309,8 +1309,8 @@ public class FlutterwavePayViewController: BaseViewController {
             return FlutterwaveConfig.sharedConfig().currencyCode == "GBP" && !checkIfPaymentOptionIsExcluded(paymentOption: .bankAccount)  ? 65 : 0
         case 10:
             return FlutterwaveConfig.sharedConfig().currencyCode == "NGN" && !checkIfPaymentOptionIsExcluded(paymentOption: .ussd)  ? 65 : 0
-        case 11:
-            return FlutterwaveConfig.sharedConfig().currencyCode == "NGN" || FlutterwaveConfig.sharedConfig().currencyCode == "USD"  && !checkIfPaymentOptionIsExcluded(paymentOption: .payPal)  ? 65 : 0
+//        case 11:
+//            return FlutterwaveConfig.sharedConfig().currencyCode == "NGN" || FlutterwaveConfig.sharedConfig().currencyCode == "USD"  && !checkIfPaymentOptionIsExcluded(paymentOption: .payPal)  ? 65 : 0
             
         //            return FlutterwaveConfig.sharedConfig().currencyCode == "NGN" || FlutterwaveConfig.sharedConfig().currencyCode == "MAD" || FlutterwaveConfig.sharedConfig().currencyCode == "XOF" || FlutterwaveConfig.sharedConfig().currencyCode == "ZAR" || FlutterwaveConfig.sharedConfig().currencyCode == "EGP" || FlutterwaveConfig.sharedConfig().currencyCode == "MUR" || FlutterwaveConfig.sharedConfig().currencyCode == "MWK" || FlutterwaveConfig.sharedConfig().currencyCode == "MZN" && checkIfPaymentOptionIsExcluded(paymentOption: .payPal)  ? 65 :  0
         //        //            return false

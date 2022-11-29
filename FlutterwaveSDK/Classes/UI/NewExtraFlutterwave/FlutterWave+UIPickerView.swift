@@ -268,7 +268,7 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
     }
     
     func showOTP(message:String, flwRef:String, otpType:OTPType){
-//        self.otpContentContainer.isHidden = true
+        self.otpContentContainer.isHidden = false
 //        self.accountOtpContentContainer.isHidden = true
         switch otpType {
         case .savedCard:

@@ -2,8 +2,8 @@
 //  Constants.swift
 //  RaveMobile
 //
-//  Created by Segun Solaja on 10/5/15.
-//  Copyright © 2015 Segun Solaja. All rights reserved.
+//  Created by Rotimi Joshua on 10/8/2020.
+//  Copyright ©  Rotimi Joshua. All rights reserved.
 //
 
 import UIKit
@@ -25,7 +25,7 @@ class RaveConstants: NSObject {
         
     }
     
-    static let flutterWaveVersion = "1.3.6"
+    static let flutterWaveVersion = "1.3.7"
     static let flutterColor = UIColor(hex: "#F5A623")
     
     static let bankStyle = [(code:"044",color:"#143f89",image:"rave_access2"),

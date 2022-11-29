@@ -19,6 +19,7 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
     
     func tranasctionSuccessful(flwRef: String?, responseData: FlutterwaveDataResponse?) {
         print("DATA Returned \(responseData?.flwRef ?? "Failed to return data")")
+        print("Response Data Returned \(String(describing: responseData))")
         
     }
     
@@ -55,9 +56,7 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
                    self.present(nav, animated: true)
 
                }
-    
-
-
+  
 
 
     override func viewDidLoad() {
