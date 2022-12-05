@@ -192,7 +192,7 @@ class FlutterwaveCardClient{
                 "currency": FlutterwaveConfig.sharedConfig().currencyCode,
                 "country":country,
                 "payment_plan":FlutterwaveConfig.sharedConfig().paymentPlan ?? 0,
-                //                                      "IP": getIFAddresses().first!,
+                "IP": getIFAddresses().first!,
                 "tx_ref": FlutterwaveConfig.sharedConfig().transcationRef!,
                 "device_fingerprint": (UIDevice.current.identifierForVendor?.uuidString)!]
             if let narrate = FlutterwaveConfig.sharedConfig().narration{
@@ -248,7 +248,7 @@ class FlutterwaveCardClient{
           
 
             let jsonString  = bodyParam?.jsonStringify()
-//                        print("JSON SENT \(jsonString)")
+//            print("JSON SENT \(jsonString)")
             let secret = FlutterwaveConfig.sharedConfig().encryptionKey!
             let data =  TripleDES.encrypt(string: jsonString ?? "", key:secret)
             let base64String = data?.base64EncodedString()
@@ -272,56 +272,7 @@ class FlutterwaveCardClient{
         
     }
     
-    //MARK: Fetch saved card
-//    func fetchSavedCards(){
-//        if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{
-//            if let deviceNumber = FlutterwaveConfig.sharedConfig().phoneNumber {
-//                let param = ["public_key":pubkey, "device_key":deviceNumber]
-//                
-//                FlutterwavePayService.getSavedCards(param, resultCallback: {[weak self] (cardResponse) in
-//                    guard let  strongSelf = self else{ return}
-//                    strongSelf.saveCardSuccess?(cardResponse.cards)
-//                })  {[weak self] (err) in
-//                    guard let  strongSelf = self else{ return}
-//                    strongSelf.saveCardError?(err)
-//                }
-//            }
-//            
-//        }
-//    }
-    //MARK: Transaction Fee
-//    public func removeSavedCard(){
-//        if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{
-//            let param = [
-//                "public_key": pubkey,
-//                "card_hash": savedCardHash!,
-//                "mobile_number": savedCardMobileNumber!]
-//            FlutterwavePayService.removeSavedCard(param, resultCallback: {[weak self] (result) in
-//                guard let strongSelf = self else {return}
-//                strongSelf.removesavedCardSuccess?()
-//                }, errorCallback: {[weak self] (err) in
-//                    guard let strongSelf = self else {return}
-//                    strongSelf.removesavedCardError?(err)
-//            })
-//        }else{
-//            self.removesavedCardError?("Public Key is not specified")
-//        }
-//    }
-    
-    //MARK: Send OTP
-//    func sendOTP(card: SavedCard){
-//        if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{
-//            let param = ["public_key":pubkey,"card_hash":card.cardHash ?? "","device_key":card.mobileNumber ?? ""]
-//            FlutterwavePayService.sendOTP(param, resultCallback: {[weak self] (message) in
-//                guard let  strongSelf = self else{ return}
-//                strongSelf.sendOTPSuccess?(message)
-//            }) {[weak self] (err) in
-//                guard let  strongSelf = self else{ return}
-//                strongSelf.sendOTPError?(err)
-//            }
-//        }
-//    }
-    
+
     func isMasterCard() -> Bool{
         if let cardNumber = self.cardNumber{
             if cardNumber.hasPrefix("5"){

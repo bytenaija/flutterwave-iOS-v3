@@ -36,8 +36,10 @@ class PaymentServicesViewModel: BaseViewModel{
     
     
     func chargeCard(client: String) {
+//        print("This logged\(client)")
         let request = ChargeCardRequest(client: client)
         makeAPICallRx(request: request, apiRequest: paymentServicesRepository.chargeCard(request:), successHandler: chargeCardResponse,onSuccessOperation: {response in
+//            print("Logging new response\(response)")
             let authMode = response.meta?.authorization?.mode ?? ""
             switch authMode{
             case "pin":

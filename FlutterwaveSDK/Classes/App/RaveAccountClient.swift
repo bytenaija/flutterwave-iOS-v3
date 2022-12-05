@@ -164,9 +164,9 @@ class FlutterwaveAccountClient {
             if let narrate = FlutterwaveConfig.sharedConfig().narration{
                 param.merge(["narration":narrate])
             }
-            if let meta = FlutterwaveConfig.sharedConfig().meta{
-                param.merge(["meta":meta])
-            }
+//            if let meta = FlutterwaveConfig.sharedConfig().meta{
+//                param.merge(["meta":meta])
+//            }
             if isUSBankAccount{
                 param.merge(["is_us_bank_charge" : "\(isUSBankAccount)"])
             }
