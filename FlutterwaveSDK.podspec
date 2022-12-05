@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'FlutterwaveSDK'
-    s.version          = '1.3.8'
+    s.version          = '1.3.9'
     s.summary          = 'FlutterwaveSDK'
     
     # This description is used to generate tags and improve search results.
