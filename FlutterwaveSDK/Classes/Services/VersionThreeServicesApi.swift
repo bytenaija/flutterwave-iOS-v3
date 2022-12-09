@@ -55,7 +55,7 @@ extension MonitorAPIService:EndpointType{
 
 extension VersionThreeServicesApi:EndpointType{
     var stagingURL: URL {
-        return URL(string: "https://ravesandboxapi.flutterwave.com/v3/sdkcheckout/")!
+        return URL(string: "https://api.ravepay.co/v3/sdkcheckout/")!
     }
     
     var baseURL: URL {

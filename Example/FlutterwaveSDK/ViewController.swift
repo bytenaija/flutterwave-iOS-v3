@@ -44,7 +44,7 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
                    config.transcationRef = "[TRANSACTION REF]" // This is a unique reference, unique to the particular transaction being carried out. It is generated when it is not provided by the merchant for every transaction.
                    config.firstName = "[USER'S FIRST NAME]" // This is the customers first name.
                    config.lastName = "[USER'S SECOND NAME]" //This is the customers last name.
-                   config.meta = [["metaname":"sdk", "metavalue":"ios"]] //This is used to include additional payment information
+                   config.meta = ["sdk":"iOS"] //This is used to include additional payment information
                    config.narration = "simplifying payments for endless possibilities"
                    config.publicKey = "[PUB_KEY]" //Public key
                    config.encryptionKey = "[ENCRYPTION_KEY]" //Encryption key
@@ -57,6 +57,7 @@ class ViewController: UIViewController, FlutterwavePayProtocol {
 
                }
     
+
 
 
     override func viewDidLoad() {

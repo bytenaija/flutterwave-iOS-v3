@@ -245,14 +245,18 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
         
     }
     @objc func showDebitCardView(){
+        
+        
         debitCardView.isHidden = false
         debitCardView.alpha = 0
         saveCardContainer.alpha = 1
         UIView.animate(withDuration: 0.6, animations: {
             self.debitCardView.alpha = 1
             self.saveCardContainer.alpha = 0
+            
         }) { (completed) in
             self.saveCardContainer.isHidden = true
+            
         }
     }
     func showWebView(url: String?,ref:String?){

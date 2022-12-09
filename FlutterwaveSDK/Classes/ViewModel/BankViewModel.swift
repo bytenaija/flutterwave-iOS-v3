@@ -30,7 +30,7 @@ class BankViewModel: BaseViewModel{
     }
     
     func bankTransfer(amount: String) {
-        let request = BankTransferRequest(txRef: FlutterwaveConfig.sharedConfig().transcationRef, amount: amount, email: FlutterwaveConfig.sharedConfig().email, phoneNumber: FlutterwaveConfig.sharedConfig().phoneNumber, currency: FlutterwaveConfig.sharedConfig().currencyCode, duration: FlutterwaveConfig.sharedConfig().duration, frequency: FlutterwaveConfig.sharedConfig().frequency, narration: FlutterwaveConfig.sharedConfig().narration, isPermanent: FlutterwaveConfig.sharedConfig().isPermanent)
+        let request = BankTransferRequest(txRef: FlutterwaveConfig.sharedConfig().transcationRef, amount: amount, email: FlutterwaveConfig.sharedConfig().email, phoneNumber: FlutterwaveConfig.sharedConfig().phoneNumber, currency: FlutterwaveConfig.sharedConfig().currencyCode, duration: FlutterwaveConfig.sharedConfig().duration, frequency: FlutterwaveConfig.sharedConfig().frequency, narration: FlutterwaveConfig.sharedConfig().narration)
         makeAPICallRx(request: request, apiRequest: bankRepository.bankTransfer(request:), successHandler: bankTransferResponse, onSuccessOperation: { response in
         }, apiName: .bankTransfer, apiErrorName: .bankTransferError)
     }

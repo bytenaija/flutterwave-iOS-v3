@@ -117,11 +117,11 @@ extension FlutterwavePayViewController {
         
         
         BankViewModel.sharedViewModel.bankTransferResponse.subscribe(onNext: { response in
-            self.bankTransferViewTwo.accountValue.text = response.meta?.authorization?.transferAccount
+            self.bankTransferViewTwo.accountValue.text = response.meta?.authorization.transferAccount
             let currency = "₦"
             self.bankTransferViewTwo.amountValue.text = (currency + self.amount.orEmpty())
-            self.bankTransferViewTwo.bankValue.text = response.meta?.authorization?.transferBank
-            self.bankTransferViewTwo.beneficiaryValue.text = response.meta?.authorization?.transferAccount
+            self.bankTransferViewTwo.bankValue.text = response.meta?.authorization.transferBank
+            self.bankTransferViewTwo.beneficiaryValue.text = response.meta?.authorization.transferAccount
             self.showBankTransferViewTwo()
         }).disposed(by: disposableBag)
         

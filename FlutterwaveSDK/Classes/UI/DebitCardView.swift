@@ -76,6 +76,14 @@ class DebitCardView: UIView {
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
+    lazy var cardCVVAmex: VSTextField = {
+        let text = VSTextField()
+        text.setFormatting("xxxx", replacementChar: "x")
+        text.placeholder = "123"
+        text.translatesAutoresizingMaskIntoConstraints = false
+        return text
+    }()
+    
     lazy var horizontalDividerView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(hex:"#E0E0E0")
@@ -140,6 +148,7 @@ class DebitCardView: UIView {
         cardfieldContainer.addSubview(cardExpiry)
         cardfieldContainer.addSubview(cardCVVTitle)
         cardfieldContainer.addSubview(cardCVV)
+        cardfieldContainer.addSubview(cardCVVAmex)
         cardfieldContainer.addSubview(horizontalDividerView)
         cardfieldContainer.addSubview(verticalDividerView)
         cardfieldContainer.addSubview(whatsCVVButton)
@@ -190,7 +199,12 @@ class DebitCardView: UIView {
             cardCVV.topAnchor.constraint(equalTo: cardCVVTitle.bottomAnchor, constant: 4),
             cardCVV.trailingAnchor.constraint(equalTo: cardfieldContainer.trailingAnchor, constant: -20),
             cardCVV.bottomAnchor.constraint(equalTo: cardfieldContainer.bottomAnchor, constant: -8),
-
+            
+            cardCVVAmex.leadingAnchor.constraint(equalTo: cardCVVTitle.leadingAnchor),
+            cardCVVAmex.topAnchor.constraint(equalTo: cardCVVTitle.bottomAnchor, constant: 4),
+            cardCVVAmex.trailingAnchor.constraint(equalTo: cardfieldContainer.trailingAnchor, constant: -20),
+            cardCVVAmex.bottomAnchor.constraint(equalTo: cardfieldContainer.bottomAnchor, constant: -8),
+            
             whatsCVVButton.leadingAnchor.constraint(equalTo: cardCVVTitle.trailingAnchor, constant: 15),
             whatsCVVButton.topAnchor.constraint(equalTo: cardCVVTitle.topAnchor),
             whatsCVVButton.heightAnchor.constraint(equalToConstant: 15),

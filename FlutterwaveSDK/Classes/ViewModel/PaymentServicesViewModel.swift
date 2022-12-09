@@ -142,7 +142,7 @@ class PaymentServicesViewModel: BaseViewModel{
             }else{
                 PaymentServicesViewModel.sharedViewModel.pwtRetryCount = 0
                 self.isLoading.onNext(false)
-                self.pendingTransactionAlert.onNext("Your transaction is still pending try again")
+                self.pendingTransactionAlert.onNext("Transaction in progress, the final status of the transaction will be notified via email ")
             }
         }
     }

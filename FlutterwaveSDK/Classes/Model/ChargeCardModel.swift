@@ -165,6 +165,26 @@ struct Authorization:Codable {
 }
 
 
+// MARK: - Authorization
+struct BankAuthorization: Codable {
+    let transferReference, transferAccount, transferBank, accountExpiration: String
+    let transferNote, transferAmount, mode: String
+
+    enum CodingKeys: String, CodingKey {
+        case transferReference = "transfer_reference"
+        case transferAccount = "transfer_account"
+        case transferBank = "transfer_bank"
+        case accountExpiration = "account_expiration"
+        case transferNote = "transfer_note"
+        case transferAmount = "transfer_amount"
+        case mode
+    }
+}
+
+
+
+
+
 protocol FlutterChargeResponse {
     var meta:Meta? { get }
 }

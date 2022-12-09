@@ -5,6 +5,7 @@
 //  Created by Rotimi Joshua on 13/09/2020.
 //
 
+var  debitCardView = DebitCardViewNew()
 import UIKit
 import MaterialComponents
 
@@ -237,14 +238,17 @@ struct CardMonthValidator: ValidatorConvertible {
 struct CardValidator: ValidatorConvertible {
     func validated(_ value: String) throws -> String {
         var card_type = CardType.Unknown
+       
         
         for card in CardType.allCards {
             if (matchesRegex(regex: card.regex, text: value)) {
                 card_type = card
                 break
-                
             }
+         
         }
+        
+     
         
         if card_type.rawValue == "Unknown"{
             throw ValidationError("invalid card format")

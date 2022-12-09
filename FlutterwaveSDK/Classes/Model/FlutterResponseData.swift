@@ -17,4 +17,5 @@ public struct FlutterwaveDataResponse {
     public let id,accountID: Int?
     public let customer: Customer?
     public let card: CardData?
+  
 }

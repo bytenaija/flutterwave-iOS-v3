@@ -26,6 +26,7 @@ enum OTPType {
     case card, bank, savedCard
 }
 
+
 public protocol  FlutterwavePayProtocol : class{
     func tranasctionSuccessful(flwRef:String?, responseData:FlutterwaveDataResponse?)
     func tranasctionFailed(flwRef:String?,responseData:FlutterwaveDataResponse?)
@@ -55,7 +56,7 @@ public class FlutterwavePayViewController: BaseViewController {
     let toolbar = UIToolbar()
     let disposeBag = DisposeBag()
     var pin = ""
-    
+    var cardType: CardType?
     
     let navBarHeight:CGFloat = UIApplication.bottomSafeAreaHeight
     
@@ -703,17 +704,39 @@ public class FlutterwavePayViewController: BaseViewController {
         let payPalHeader = getHeader()
         headers = [nil,debitCardHeader,bankAccountHeader, mpesaHeader,ghanaMobileMoneyHeader,ugandaMobileMoneyHeader,rwandaMobileMoneyHeader,francoMobileMoneyHeader,zambiaMobileMoneyHeader,ukMobileMoneyHeader,ussdHeader,payWithBarterHeader,payWithNigerianAccountHeader, payWithBankTransferHeader, payPalHeader]
     }
-    
-    
+
+
     func configureDebitCardView(){
         
+        
+//        switch cardType {
+//        case.Amex:
+//
+//            debitCardView.cardCVV.rx.text.orEmpty
+//                .map { String($0.prefix(4)) }
+//                .bind(to: debitCardView.cardCVVAmex.rx.text)
+//                .disposed(by: disposeBag)
+//        default:
+//
+//                    //Validate Expiry Date
+//                    debitCardView.cardCVV.rx.text.orEmpty
+//                        .map { String($0.prefix(3)) }
+//                        .bind(to: debitCardView.cardCVV.rx.text)
+//                        .disposed(by: disposeBag)
+//
+//        }
+//
+//
         //Validate Expiry Date
         //Limit cvv texfield character
+        debitCardView.cardCVV.isHidden = false
+        debitCardView.cardCVVAmex.isHidden = true
         debitCardView.cardCVV.rx.text.orEmpty
             .map { String($0.prefix(3)) }
             .bind(to: debitCardView.cardCVV.rx.text)
             .disposed(by: disposeBag)
-        
+
+    
         //Limit expiry texfield character
         debitCardView.cardExpiry.rx.text.orEmpty
             .map { String($0.prefix(5)) }
@@ -730,6 +753,7 @@ public class FlutterwavePayViewController: BaseViewController {
         self.debitCardView.cardNumberTextField.watchText2(validationType: cardValidator, disposeBag: disposeBag)
         
         self.debitCardView.cardCVV.watchText(validationType: ValidatorType.requiredField(field: "CVV"), disposeBag: disposeBag)
+        self.debitCardView.cardCVVAmex.watchText(validationType: ValidatorType.requiredField(field: "CVV"), disposeBag: disposeBag)
         
         let expiryValidator = ValidatorType.cardMonth
         self.debitCardView.cardExpiry.watchText(validationType: expiryValidator, disposeBag: disposeBag)
