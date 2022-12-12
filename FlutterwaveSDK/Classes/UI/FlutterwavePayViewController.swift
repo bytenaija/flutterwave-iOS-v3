@@ -729,8 +729,7 @@ public class FlutterwavePayViewController: BaseViewController {
 //
         //Validate Expiry Date
         //Limit cvv texfield character
-        debitCardView.cardCVV.isHidden = false
-        debitCardView.cardCVVAmex.isHidden = true
+      
         debitCardView.cardCVV.rx.text.orEmpty
             .map { String($0.prefix(3)) }
             .bind(to: debitCardView.cardCVV.rx.text)
@@ -753,7 +752,6 @@ public class FlutterwavePayViewController: BaseViewController {
         self.debitCardView.cardNumberTextField.watchText2(validationType: cardValidator, disposeBag: disposeBag)
         
         self.debitCardView.cardCVV.watchText(validationType: ValidatorType.requiredField(field: "CVV"), disposeBag: disposeBag)
-        self.debitCardView.cardCVVAmex.watchText(validationType: ValidatorType.requiredField(field: "CVV"), disposeBag: disposeBag)
         
         let expiryValidator = ValidatorType.cardMonth
         self.debitCardView.cardExpiry.watchText(validationType: expiryValidator, disposeBag: disposeBag)

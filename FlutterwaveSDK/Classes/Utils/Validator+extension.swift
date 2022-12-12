@@ -245,10 +245,7 @@ struct CardValidator: ValidatorConvertible {
                 card_type = card
                 break
             }
-         
         }
-        
-     
         
         if card_type.rawValue == "Unknown"{
             throw ValidationError("invalid card format")

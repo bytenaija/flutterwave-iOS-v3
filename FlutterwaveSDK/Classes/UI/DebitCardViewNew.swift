@@ -114,34 +114,7 @@ class DebitCardViewNew: UIView {
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
-    
-    lazy var cardCVVAmex: MDCOutlinedTextField = {
-        let text = MDCOutlinedTextField()
-        text.backgroundColor = UIColor.lightGray.withAlphaComponent(0.1)
-        text.label.text = "CVV Amex"
-        text.setFloatingLabelColor(.black, for: .normal)
-        text.setFloatingLabelColor(.black, for: .editing)
-        text.tintColor = .lightGray
-        text.autoresizingMask = [.flexibleBottomMargin, .flexibleTopMargin, .flexibleWidth]
-        text.setNormalLabelColor(.lightGray, for: .normal)
-        text.font = UIFont.systemFont(ofSize: 16, weight: .medium)
-        text.setTextColor(.black, for: .editing)
-        text.setTextColor(.black, for: .normal)
-        text.setOutlineColor(UIColor.lightGray.withAlphaComponent(0.17), for: .normal)
-        text.setOutlineColor(UIColor(hex: "#F5A623").withAlphaComponent(0.87), for: .editing)
-        let redView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
-        redView.addSubview(questionButton)
-        
-        text.rightView =  redView
-        text.rightViewMode = .always
-        text.keyboardType = .numberPad
-        text.isSecureTextEntry = true
-        text.translatesAutoresizingMaskIntoConstraints = false
-        return text
-    }()
-    
-    
-    
+   
     lazy var rememberCardCheck: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "rave_check_box",in: Bundle.getResourcesBundle(), compatibleWith: nil), for: .normal)
@@ -186,12 +159,11 @@ class DebitCardViewNew: UIView {
         addSubview(cardNumberTextField)
         addSubview(cardExpiry)
         addSubview(cardCVV)
-        addSubview(cardCVVAmex)
+      
         addSubview(rememberCardCheck)
         addSubview(rememberCardText)
         addSubview(cardPayButton)
         
-        cardCVVAmex.isHidden = true
         setupConstriant()
     }
     
@@ -217,11 +189,6 @@ class DebitCardViewNew: UIView {
             cardCVV.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             cardCVV.widthAnchor.constraint(equalToConstant: 140),
             cardCVV.heightAnchor.constraint(equalToConstant: 50),
-            
-            cardCVVAmex.topAnchor.constraint(equalTo: cardNumberTextField.bottomAnchor, constant: 30),
-            cardCVVAmex.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            cardCVVAmex.widthAnchor.constraint(equalToConstant: 140),
-            cardCVVAmex.heightAnchor.constraint(equalToConstant: 50),
            
             
             rememberCardCheck.topAnchor.constraint(equalTo: cardExpiry.bottomAnchor, constant:18),
