@@ -1,5 +1,5 @@
 PODS:
-  - FlutterwaveSDK (1.3.2):
+  - FlutterwaveSDK (1.4.0):
     - IQKeyboardManagerSwift
     - lottie-ios
     - "MaterialComponents/TextControls+OutlinedTextAreas"
@@ -9,7 +9,7 @@ PODS:
     - Swinject
     - SwinjectAutoregistration
   - IQKeyboardManagerSwift (6.5.6)
-  - lottie-ios (3.0.7)
+  - lottie-ios (4.0.1)
   - MaterialComponents/AnimationTiming (118.1.0)
   - MaterialComponents/Availability (118.1.0)
   - MaterialComponents/private/Math (118.1.0)
@@ -78,9 +78,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FlutterwaveSDK: 9648ec4373463377962c5350b1d3f291c5526978
+  FlutterwaveSDK: e13900dcae733c5425aab0facafadcad86b073ea
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
-  lottie-ios: c38c3178ae8c4a8f200661aa5f80b9f1ca7f56b3
+  lottie-ios: 54d22edf55b839f0929cabbfe609c9aa548b1145
   MaterialComponents: e4a7c8b5eabe7856ef58f632fb5800a229bda5be
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
@@ -91,4 +91,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: e7a32a1f0b144636285016aee49258a32ce7b387
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2
