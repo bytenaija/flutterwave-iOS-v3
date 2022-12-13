@@ -1,9 +1,9 @@
 //
-//  LoadingHUD.swift
-//  GetBarter
+//  ViewController.swift
+//  FlutterwaveSDK
 //
-//  Created by Olusegun Solaja on 04/08/2018.
-//  Copyright © 2018 Olusegun Solaja. All rights reserved.
+//  Created by texyz on 10/02/2020.
+//  Copyright (c) 2020 texyz. All rights reserved.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import Lottie
 
 class LoadingHUD: UIView {
     //let appDelegate = UIApplication.shared.delegate as? AppDelegate
-    var animation:AnimationView!
+    var animation:LottieAnimationView!
     
     var bgColor: UIColor? = .clear
     var applyBlur = true
@@ -60,7 +60,7 @@ class LoadingHUD: UIView {
         }
 		
         
-		animation = AnimationView(name: animationFile, bundle: Bundle.getResourcesBundle() ?? Bundle.main)
+		animation = LottieAnimationView(name: animationFile, bundle: Bundle.getResourcesBundle() ?? Bundle.main)
         animation.loopMode = .loop
         animation.translatesAutoresizingMaskIntoConstraints = false
         addSubview(animation)
@@ -83,7 +83,7 @@ class LoadingHUD: UIView {
             blurView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         }
         
-        animation = AnimationView(name: animationFile)
+        animation = LottieAnimationView(name: animationFile)
         animation.loopMode = .loop
         animation.translatesAutoresizingMaskIntoConstraints = false
         addSubview(animation)
