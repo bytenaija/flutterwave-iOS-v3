@@ -29,7 +29,7 @@ public class FlutterwaveConfig {
     public var narration:String?
     public var paymentPlan:Int?
     public var isPreAuth:Bool = false
-    public var isPermanent:Bool = true
+    public var isPermanent:Bool = false
     public var meta:[String:String]?
     public var subAccounts:[SubAccount]?
     public var whiteListedBanksOnly:[String]?
