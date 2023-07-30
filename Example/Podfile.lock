@@ -1,5 +1,5 @@
 PODS:
-  - FlutterwaveSDK (1.2.7):
+  - FlutterwaveSDK (1.4.6):
     - IQKeyboardManagerSwift
     - lottie-ios
     - "MaterialComponents/TextControls+OutlinedTextAreas"
@@ -8,55 +8,55 @@ PODS:
     - RxSwift
     - Swinject
     - SwinjectAutoregistration
-  - IQKeyboardManagerSwift (6.5.6)
-  - lottie-ios (3.0.7)
-  - MaterialComponents/AnimationTiming (118.1.0)
-  - MaterialComponents/Availability (118.1.0)
-  - MaterialComponents/private/Math (118.1.0)
-  - "MaterialComponents/private/TextControlsPrivate+BaseStyle (118.1.0)":
+  - IQKeyboardManagerSwift (6.5.12)
+  - lottie-ios (4.2.0)
+  - MaterialComponents/AnimationTiming (124.2.0)
+  - MaterialComponents/Availability (124.2.0)
+  - MaterialComponents/private/Math (124.2.0)
+  - "MaterialComponents/private/TextControlsPrivate+BaseStyle (124.2.0)":
     - MaterialComponents/AnimationTiming
     - MaterialComponents/private/Math
     - "MaterialComponents/private/TextControlsPrivate+Shared"
-  - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle (118.1.0)":
+  - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle (124.2.0)":
     - MaterialComponents/AnimationTiming
     - MaterialComponents/Availability
     - MaterialComponents/private/Math
     - "MaterialComponents/private/TextControlsPrivate+Shared"
-  - "MaterialComponents/private/TextControlsPrivate+Shared (118.1.0)":
+  - "MaterialComponents/private/TextControlsPrivate+Shared (124.2.0)":
     - MaterialComponents/AnimationTiming
     - MaterialComponents/private/Math
     - "MaterialComponents/TextControls+Enums"
-  - "MaterialComponents/private/TextControlsPrivate+TextFields (118.1.0)":
+  - "MaterialComponents/private/TextControlsPrivate+TextFields (124.2.0)":
     - MaterialComponents/private/Math
     - "MaterialComponents/private/TextControlsPrivate+Shared"
-  - "MaterialComponents/TextControls+BaseTextAreas (118.1.0)":
+  - "MaterialComponents/TextControls+BaseTextAreas (124.2.0)":
     - "MaterialComponents/private/TextControlsPrivate+BaseStyle"
     - "MaterialComponents/private/TextControlsPrivate+Shared"
     - MDFInternationalization
-  - "MaterialComponents/TextControls+BaseTextFields (118.1.0)":
+  - "MaterialComponents/TextControls+BaseTextFields (124.2.0)":
     - "MaterialComponents/private/TextControlsPrivate+BaseStyle"
     - "MaterialComponents/private/TextControlsPrivate+Shared"
     - "MaterialComponents/private/TextControlsPrivate+TextFields"
     - MDFInternationalization
-  - "MaterialComponents/TextControls+Enums (118.1.0)"
-  - "MaterialComponents/TextControls+OutlinedTextAreas (118.1.0)":
+  - "MaterialComponents/TextControls+Enums (124.2.0)"
+  - "MaterialComponents/TextControls+OutlinedTextAreas (124.2.0)":
     - MaterialComponents/Availability
     - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle"
     - "MaterialComponents/TextControls+BaseTextAreas"
-  - "MaterialComponents/TextControls+OutlinedTextFields (118.1.0)":
+  - "MaterialComponents/TextControls+OutlinedTextFields (124.2.0)":
     - MaterialComponents/Availability
     - "MaterialComponents/private/TextControlsPrivate+OutlinedStyle"
     - "MaterialComponents/TextControls+BaseTextFields"
-  - MDFInternationalization (2.0.0)
-  - RxCocoa (5.1.1):
-    - RxRelay (~> 5)
-    - RxSwift (~> 5)
-  - RxRelay (5.1.1):
-    - RxSwift (~> 5)
-  - RxSwift (5.1.1)
-  - Swinject (2.7.1)
-  - SwinjectAutoregistration (2.7.0):
-    - Swinject (~> 2.7)
+  - MDFInternationalization (3.0.0)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
+  - Swinject (2.8.3)
+  - SwinjectAutoregistration (2.8.3):
+    - Swinject (~> 2.8.3)
 
 DEPENDENCIES:
   - FlutterwaveSDK (from `../`)
@@ -78,16 +78,16 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FlutterwaveSDK: c32c4023019a6099d460b52ac9175aee7c28484a
-  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
-  lottie-ios: c38c3178ae8c4a8f200661aa5f80b9f1ca7f56b3
-  MaterialComponents: e4a7c8b5eabe7856ef58f632fb5800a229bda5be
-  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
-  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
-  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
-  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
-  Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
-  SwinjectAutoregistration: 330f5012642a8b5c89a8a4adb0c5e52df07382c0
+  FlutterwaveSDK: ff344590e6c505b6b7b108bee8b11f2fd15d669e
+  IQKeyboardManagerSwift: 371b08cb39664fb56030f5345c815a4ffc74bbc0
+  lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
+  MaterialComponents: 1a9b2d9d45b1601ae544de85089adc4c464306d4
+  MDFInternationalization: d697c55307816222a55685c4ccb1044ffb030c12
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  Swinject: 893c9a543000ac2f10ee4cbaf0933c6992c935d5
+  SwinjectAutoregistration: e3ee378dc458acf78d176fc7fec3902603452667
 
 PODFILE CHECKSUM: d8e7ca9e6e56d8a6d3866726fb702f20997be609
 
