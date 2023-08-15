@@ -215,7 +215,7 @@ If you need further help with this SDK, feel free to get in touch with our Devel
 
 You can also follow us [@FlutterwaveEng](https://twitter.com/FlutterwaveEng) to stay updated and share your thoughts with us. 😊
 
-**Please note that merchant must be PCI-DSS compliant to be able to charge cards on Flutterwave SDK.**
+**Please note that merchant must be PCI-DSS compliant to be able to charge cards on FlutterwaveSDK.**
 
 ## Contribution Guidelines
 We welcome contributions to enhance the Flutterwave iOS SDK. Please review our contribution guidelines before submitting pull requests.
