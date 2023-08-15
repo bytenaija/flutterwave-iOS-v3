@@ -185,7 +185,8 @@ These testing helpers help you ensure that your integration handles various paym
 ## Handling Transactions
 
 When handling transactions using the Flutterwave iOS SDK, you can implement callback methods to respond to different transaction outcomes.
-```
+``` swift
+
 // MARK: - Transaction Handling
     
     // This method is called when a transaction is successful
