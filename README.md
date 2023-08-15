@@ -89,10 +89,10 @@ config.encryptionKey = "[ENCRYPTION_KEY]" //Encryption key
 
 The SDK offers the following features:
 
-## Collections: 
+### Collections: 
 Support for various payment methods including Cards, Accounts, Mobile Money, Bank Transfers, USSD, and Barter.
 
-## Recurring Payments: 
+### Recurring Payments: 
 Tokenization and Subscription capabilities are also provided.
 
 # Use Case
