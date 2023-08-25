@@ -4,13 +4,10 @@ on:
   push:
     branches:
       - dev
-  pull_request:
-    branches:
-      - dev
 
 jobs:
-  build:
-    name: Build and Test
+  build_and_publish:
+    name: Build, Test, and Publish
     runs-on: macos-latest
 
     steps:
@@ -39,3 +36,18 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Update Podspec Version
+        run: |
+          # Update the version in your podspec
+          sed -i '' "s/s.version *= *'[^']*'/s.version = '$(git describe --tags --abbrev=0 | sed 's/v//')'/g" FlutterwaveSDK.podspec
+
+      - name: Publish to CocoaPods
+        run: |
+          # Authenticate with CocoaPods repo using environment variables
+          echo -e "$POD_REPO_SECRET" | pod trunk register $POD_REPO 'your-email@example.com' --name='Your Name' --silent
+          pod trunk push FlutterwaveSDK.podspec --allow-warnings
+
+env:
+  POD_REPO: 'https://github.com/CocoaPods/Specs.git'
+  POD_REPO_SECRET: ${{ secrets.COCOAPODS_REPO_SECRET }}
