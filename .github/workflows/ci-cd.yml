@@ -1,0 +1,41 @@
+name: FlutterwaveSDK CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up CocoaPods
+        run: |
+          gem install cocoapods
+          pod install
+
+      - name: Build Framework
+        run: |
+          xcodebuild clean build -workspace FlutterwaveSDK.xcworkspace -scheme FlutterwaveSDK_Example -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 13"
+
+      - name: Install Dependencies
+        run: pod install
+
+      - name: Run Unit Tests
+        run: xcodebuild test -workspace FlutterwaveSDK.xcworkspace -scheme FlutterwaveSDK_Example -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 13"
+
+      - name: Run Coverage Scan
+        run: slather coverage -s --scheme FlutterwaveSDK_Example FlutterwaveSDK.xcodeproj
+
+      - name: Upload Coverage Report
+        uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
