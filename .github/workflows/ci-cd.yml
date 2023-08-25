@@ -45,7 +45,7 @@ jobs:
       - name: Publish to CocoaPods
         run: |
           # Authenticate with CocoaPods repo using environment variables
-          echo -e "$POD_REPO_SECRET" | pod trunk register $POD_REPO 'your-email@example.com' --name='Your Name' --silent
+          echo -e "$POD_REPO_SECRET" | pod trunk register $POD_REPO 'rotimi.joshua@flutterwavego.com' --name='Rotimi Joshua' --silent
           pod trunk push FlutterwaveSDK.podspec --allow-warnings
 
 env:
