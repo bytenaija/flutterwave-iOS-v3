@@ -14,6 +14,12 @@ extension FlutterwavePayViewController : UITextFieldDelegate,CardSelect,UIPicker
         }
     }
 
+    func transactionFailed(flwRef: String, responseData:FlutterwaveDataResponse?) {
+        self.dismiss(animated: true) {
+            self.delegate?.transactionFailed(flwRef: flwRef, responseData: responseData)
+        }
+    }
+
     func cardSelected(card: SavedCard?) {
         flutterwaveCardClient.selectedCard = card
         if let card =  flutterwaveCardClient.selectedCard{
