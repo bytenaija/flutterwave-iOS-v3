@@ -18,7 +18,7 @@ class FlutterwaveAccountClient {
     public var isInternetBanking:Bool = false
     public var blacklistedBankCodes:[String]?
     public var isUSBankAccount =  false
-    
+
     typealias BanksHandler = (([Bank]?) -> Void)
     typealias ErrorHandler = ((String?,FlutterwaveDataResponse?) -> Void)
     typealias FeeSuccessHandler = ((String?,String?) -> Void)
@@ -60,14 +60,14 @@ class FlutterwaveAccountClient {
 //                    }
 //                }
 //            }, errorCallback: { (err) in
-//                
+//
 //                self.error?(err,nil)
 //            })
 //        }else{
 //            self.error?("Public Key is not specified",nil)
 //        }
 //    }
-    
+
     //MARK: Bank List
 //    public func getBanks(){
 //        var banks:[Bank]? = []
@@ -99,11 +99,11 @@ class FlutterwaveAccountClient {
 //                    self.banks?(banks)
 //                }
 //            }
-//            
+//
 //        }) { (err) in
 //            //            print(err)
 //        }
-//        
+//
 //    }
     //MARK: Charge
     public func chargeAccount(){
@@ -125,7 +125,7 @@ class FlutterwaveAccountClient {
             guard let _ = FlutterwaveConfig.sharedConfig().email else {
                 fatalError("Email address is missing")
             }
-            guard let _ = FlutterwaveConfig.sharedConfig().transcationRef else {
+            guard let _ = FlutterwaveConfig.sharedConfig().transactionRef else {
                 fatalError("transactionRef is missing")
             }
             var param:[String:Any] = [
@@ -139,7 +139,7 @@ class FlutterwaveAccountClient {
                 "currency": FlutterwaveConfig.sharedConfig().currencyCode,
                 "country":country,
                 "IP": getIFAddresses().first!,
-                "txRef":  FlutterwaveConfig.sharedConfig().transcationRef!,
+                "txRef":  FlutterwaveConfig.sharedConfig().transactionRef!,
                 "device_fingerprint": (UIDevice.current.identifierForVendor?.uuidString)!
             ]
             if let accountNumber = self.accountNumber{
@@ -148,7 +148,7 @@ class FlutterwaveAccountClient {
             if let code = self.bankCode{
                 param.merge(["accountbank":code])
             }
-            
+
             if FlutterwaveConfig.sharedConfig().isPreAuth{
                 param.merge(["charge_type":"preauth"])
             }
@@ -173,7 +173,7 @@ class FlutterwaveAccountClient {
             if FlutterwaveConfig.sharedConfig().currencyCode == "GBP"{
                 param.merge(["is_uk_bank_charge2" :1, "accountname":accountNumber.orEmpty()])
             }
-            
+
             if let subAccounts = FlutterwaveConfig.sharedConfig().subAccounts{
                 let subAccountDict =  subAccounts.map { (subAccount) -> [String:String] in
                     var dict = ["id":subAccount.id]
@@ -194,25 +194,25 @@ class FlutterwaveAccountClient {
                             }
                         }
                     }
-                    
+
                     return dict
                 }
                 param.merge(["subaccounts":subAccountDict])
             }
-            
-            
+
+
             if(FlutterwaveConfig.sharedConfig().currencyCode == "NGN"){
                 BankViewModel.sharedViewModel.nigeriaBankTransfer(amount: self.amount.orEmpty(), accountBank: self.bankCode.orEmpty(), accountNumber: self.accountNumber.orEmpty(), phoneNumber: phoneNumber.orEmpty(), passCode: passcode.orEmpty(), bvn: bvn.orEmpty())
             }
-            
+
             //            let jsonString  = param.jsonStringify()
             //            let secret = RaveConfig.sharedConfig().encryptionKey!
             //            let data =  TripleDES.encrypt(string: jsonString, key:secret)
             //            let base64String = data?.base64EncodedString()
-            
+
         }
     }
-    
-    
-    
+
+
+
 }

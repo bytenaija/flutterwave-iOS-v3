@@ -18,15 +18,15 @@ class FlutterwaveCardClient{
     public var expMonth:String?
     public var saveCard = true
     public var otp:String?
-    
+
     public var isSaveCardCharge:String?
     public var saveCardPayment:String?
     public var savedCardHash:String?
     public var savedCardMobileNumber:String?
-    
+
     public var transactionReference:String?
     public var bodyParam:[String:Any]? = [:]
-    
+
     typealias FeeSuccessHandler = ((String?,String?) -> Void)
     typealias SuccessHandler = ((String?,FlutterwaveDataResponse?) -> Void)
     typealias ErrorHandler = ((String?,FlutterwaveDataResponse?) -> Void)
@@ -37,7 +37,7 @@ class FlutterwaveCardClient{
     typealias SaveCardErrorHandler = ((String?) -> Void)
     typealias RemoveSavedCardSuccessHandler = (() -> Void)
     typealias RemoveSavedCardErrorHandler = ((String?) -> Void)
-    
+
     public var error:ErrorHandler?
     public var saveCardError:SaveCardErrorHandler?
     public var saveCardSuccess:SaveCardSuccessHandler?
@@ -52,12 +52,12 @@ class FlutterwaveCardClient{
     public var sendOTPSuccess:SaveCardErrorHandler?
     public var sendOTPError:SaveCardErrorHandler?
     public var selectedCard:SavedCard?
-    
+
     private var isRetryCharge = false
     private var retryChargeValue:String?
-    
-    
-    
+
+
+
     //MARK: Charge Saved Card
     public func saveCardCharge(){
         if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{
@@ -77,7 +77,7 @@ class FlutterwaveCardClient{
                                       "amount":amount ?? "",
                                       "firstname":FlutterwaveConfig.sharedConfig().firstName ?? "",
                                       "lastname": FlutterwaveConfig.sharedConfig().lastName ?? "",
-                                      "txRef": FlutterwaveConfig.sharedConfig().transcationRef!]
+                                      "txRef": FlutterwaveConfig.sharedConfig().transactionRef!]
             if let saveCard = isSaveCardCharge{
                 param.merge(["is_saved_card_charge":saveCard])
             }
@@ -93,7 +93,7 @@ class FlutterwaveCardClient{
                 }else{
                     param.merge(["is_visa":false])
                 }
-                
+
             }
             if let device = selectedCard?.mobileNumber{
                 param.merge(["device_key":device])
@@ -124,7 +124,7 @@ class FlutterwaveCardClient{
                             }
                         }
                     }
-                    
+
                     return dict
                 }
                 param.merge(["subaccounts":subAccountDict])
@@ -132,14 +132,14 @@ class FlutterwaveCardClient{
             if let meta = FlutterwaveConfig.sharedConfig().meta{
                 param.merge(["meta":meta])
             }
-            
+
             let jsonString  = param.jsonStringify()
-            
+
             let secret = FlutterwaveConfig.sharedConfig().encryptionKey!
             let data =  TripleDES.encrypt(string: jsonString, key:secret)
             let base64String = data?.base64EncodedString()
-            
-            
+
+
             let reqbody = [
                 "PBFPubKey": pubkey,
                 "client": base64String!, // Encrypted $data payload here.
@@ -251,7 +251,7 @@ class FlutterwaveCardClient{
             guard let _ = FlutterwaveConfig.sharedConfig().email else {
                 fatalError("Email address is missing")
             }
-            guard let _ = FlutterwaveConfig.sharedConfig().transcationRef else {
+            guard let _ = FlutterwaveConfig.sharedConfig().transactionRef else {
                 fatalError("transactionRef is missing")
             }
             //            print("FUNCTION CARD \(cardNumber.orEmpty())")
@@ -267,13 +267,13 @@ class FlutterwaveCardClient{
                 "currency": FlutterwaveConfig.sharedConfig().currencyCode,
                 "country":country,
                 //                                      "IP": getIFAddresses().first!,
-                "tx_ref": FlutterwaveConfig.sharedConfig().transcationRef!,
+                "tx_ref": FlutterwaveConfig.sharedConfig().transactionRef!,
                 "device_fingerprint": (UIDevice.current.identifierForVendor?.uuidString)!]
             if let narrate = FlutterwaveConfig.sharedConfig().narration{
                 param.merge(["narration":narrate])
             }
-           
-            
+
+
             if let subAccounts = FlutterwaveConfig.sharedConfig().subAccounts{
                 let subAccountDict =  subAccounts.map { (subAccount) -> [String:String] in
                     var dict = ["id":subAccount.id]
@@ -294,12 +294,12 @@ class FlutterwaveCardClient{
                             }
                         }
                     }
-                    
+
                     return dict
                 }
                 param.merge(["subaccounts":subAccountDict])
             }
-            
+
             if let meta = FlutterwaveConfig.sharedConfig().meta{
                 param.merge(["meta":meta])
             }
@@ -308,8 +308,8 @@ class FlutterwaveCardClient{
                     param.merge(["remember_device_mobile_key": phone, "remember_device_email":FlutterwaveConfig.sharedConfig().email!, "is_remembered":"1"])
                 }
             }
-           
-            
+
+
             if replaceData {
                 bodyParam = param
             }
@@ -323,32 +323,32 @@ class FlutterwaveCardClient{
             let secret = FlutterwaveConfig.sharedConfig().encryptionKey!
             let data =  TripleDES.encrypt(string: jsonString, key:secret)
             let base64String = data?.base64EncodedString()
-            
+
             CardViewModel.sharedViewModel.saveCard = saveCard
             PaymentServicesViewModel.sharedViewModel.chargeCard(client: base64String!)
-            
+
         }else{
             self.error?("Public Key is not specified",nil)
         }
     }
-    
+
     //MARK: Validate Card
     public func validateCardOTP(){
         guard let ref = self.transactionReference, let _otp = otp else {
             self.error?("Transaction Reference  or OTP is not set",nil)
             return
         }
-        
+
         PaymentServicesViewModel.sharedViewModel.validateCharge(otp: _otp, flwRef: ref, type: "card")
-        
+
     }
-    
+
     //MARK: Fetch saved card
 //    func fetchSavedCards(){
 //        if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{
 //            if let deviceNumber = FlutterwaveConfig.sharedConfig().phoneNumber {
 //                let param = ["public_key":pubkey, "device_key":deviceNumber]
-//                
+//
 //                FlutterwavePayService.getSavedCards(param, resultCallback: {[weak self] (cardResponse) in
 //                    guard let  strongSelf = self else{ return}
 //                    strongSelf.saveCardSuccess?(cardResponse.cards)
@@ -357,7 +357,7 @@ class FlutterwaveCardClient{
 //                    strongSelf.saveCardError?(err)
 //                }
 //            }
-//            
+//
 //        }
 //    }
     //MARK: Transaction Fee
@@ -378,7 +378,7 @@ class FlutterwaveCardClient{
 //            self.removesavedCardError?("Public Key is not specified")
 //        }
 //    }
-    
+
     //MARK: Send OTP
 //    func sendOTP(card: SavedCard){
 //        if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{
@@ -392,7 +392,7 @@ class FlutterwaveCardClient{
 //            }
 //        }
 //    }
-    
+
     func isMasterCard() -> Bool{
         if let cardNumber = self.cardNumber{
             if cardNumber.hasPrefix("5"){
@@ -404,7 +404,7 @@ class FlutterwaveCardClient{
             return false
         }
     }
-    
-    
-    
+
+
+
 }

@@ -21,7 +21,7 @@ public class FlutterwaveConfig {
     public var firstName:String?
     public var lastName:String?
     public var phoneNumber:String?
-    public var transcationRef:String?
+    public var transactionRef:String?
     public var duration:Double = 2
     public var frequency:Double = 5
     public var country:String = "NG"
@@ -33,11 +33,11 @@ public class FlutterwaveConfig {
     public var subAccounts:[SubAccount]?
     public var whiteListedBanksOnly:[String]?
     public var paymentOptionsToExclude:[PaymentOption] = []
-    
+
     public class func sharedConfig() -> FlutterwaveConfig {
         struct Static {
             static let kbManager = FlutterwaveConfig()
-            
+
         }
         return Static.kbManager
     }

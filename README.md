@@ -67,7 +67,7 @@ pod install
 # Carthage
 
 1. Add the following line to your Cartfile:
-``` 
+```
 "github Flutterwave/iOS-v3"
 ```
 2. Run the following command in your terminal:
@@ -89,10 +89,10 @@ config.encryptionKey = "[ENCRYPTION_KEY]" //Encryption key
 
 The SDK offers the following features:
 
-### Collections: 
+### Collections:
 Support for various payment methods including Cards, Accounts, Mobile Money, Bank Transfers, USSD, and Barter.
 
-### Recurring Payments: 
+### Recurring Payments:
 Tokenization and Subscription capabilities are also provided.
 
 # Use Case
@@ -106,27 +106,27 @@ Receive and handle the payment response.
 
 ## Sample Code
 ```swift
- 
+
 import FlutterwaveSDK
- 
+
 class ViewController: UIViewController, FlutterwavePayProtocol {
- 
-func tranasctionSuccessful(flwRef: String?, responseData: FlutterwaveDataResponse?) {
+
+func transactionSuccessful(flwRef: String?, responseData: FlutterwaveDataResponse?) {
 print("Successful with \(responseData?.flwRef ?? "Failed to return data")")
- 
+
 }
- 
-func tranasctionFailed(flwRef: String?, responseData: FlutterwaveDataResponse?) {
+
+func transactionFailed(flwRef: String?, responseData: FlutterwaveDataResponse?) {
 print( "Failed transaction with FlwRef \(flwRef.orEmpty())")
 }
- 
+
 let flutterLabel = UILabel()
 let exampleLabel = UILabel()
 let underLineView = UIView()
 let launchButton = UIButton(type: .system)
- 
- 
- 
+
+
+
 @objc func showExample(){
    let config = FlutterwaveConfig.sharedConfig()
    config.paymentOptionsToExclude = []
@@ -134,7 +134,7 @@ let launchButton = UIButton(type: .system)
    config.email = "user@flw.com" // This is the email address of the customer
    config.isStaging = false // Toggle this for staging and live environment
    config.phoneNumber = "077883***1" //Phone number
-   config.transcationRef = "IOS TEXT" // This is a unique reference, unique to the particular transaction being carried out. It is generated when it is not provided by the merchant for every transaction.
+   config.transactionRef = "IOS TEXT" // This is a unique reference, unique to the particular transaction being carried out. It is generated when it is not provided by the merchant for every transaction.
    config.firstName = "Yemi" // This is the customers first name.
    config.lastName = "Desola" //This is the customers last name.
    config.meta = [["metaname":"sdk", "metavalue":"ios"]] //This is used to include additional payment information
@@ -188,13 +188,13 @@ When handling transactions using the Flutterwave iOS SDK, you can implement call
 ``` swift
 
 // MARK: - Transaction Handling
-    
+
     // This method is called when a transaction is successful
     func transactionSuccessful(flwRef: String?, responseData: FlutterwaveDataResponse?) {
         print("DATA Returned \(responseData?.flwRef ?? "Failed to return data")")
         // You can add additional logic here to handle a successful transaction
     }
-    
+
     // This method is called when a transaction fails
     func transactionFailed(flwRef: String?, responseData: FlutterwaveDataResponse?) {
         print("Failed to return data with FlwRef \(flwRef.orEmpty())")

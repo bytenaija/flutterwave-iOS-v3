@@ -18,8 +18,8 @@ class BaseViewModel {
     let moveToOTPNext = PublishSubject<(String,String,TransactionSource)>()
     let moveToWebViewNext = PublishSubject<(String,FlutterChargeResponse)>()
     let moveToAddressVerificationNext = PublishSubject<(String,FlutterChargeResponse)>()
-    
-    
+
+
     func checkAuth(response:FlutterChargeResponse?,flwRef:String,source:TransactionSource){
         let authMode = response?.meta?.authorization?.mode ?? ""
         if let flutterResponse = response{
@@ -40,12 +40,12 @@ class BaseViewModel {
                 break
             }
         }
-        
+
     }
-    
+
     func makeAPICallRx <R:Codable,T:Codable>(request:R,apiRequest:(R) -> Observable<NetworkResult<T>>,successHandler:PublishSubject<T>,showLoading:Bool = true,onSuccessOperation:((T) -> ())? = nil
                                              ,showError:Bool = true,onFailureOperation: (() -> () )? = nil,handleFailureOperation:((T) -> () )? = nil ,handleLoading:PublishSubject<Bool>? = nil,apiName:FeaturesTrackerName? = nil,apiErrorName:FeaturesTrackerName? = nil){
-        
+
         let startDate = Date()
         if let handleLoadingCustom = handleLoading {
             handleLoadingCustom.onNext(true)
@@ -54,8 +54,8 @@ class BaseViewModel {
                 self.isLoading.onNext(true)
             }
         }
-        
-        
+
+
         apiRequest(request).subscribe(onNext: { response in
             if let handleLoadingCustom = handleLoading {
                 handleLoadingCustom.onNext(false)
@@ -66,7 +66,7 @@ class BaseViewModel {
             }
             let executionTime = Date().timeIntervalSince(startDate)
             let time = executionTime.stringFromTimeInterval()
-            
+
             if case let .success(data) = response {
                 successHandler.onNext(data)
                 onSuccessOperation?(data)
@@ -83,12 +83,12 @@ class BaseViewModel {
                         self.error.onNext(errorMessage)
                         onFailureOperation?()
                     }
-                    
+
                 }
                 if let title = apiErrorName{
                     self.monitorApiCalls(title: title, message: time,error: errorMessage)
                 }
-                
+
             }else if case let .error(error) = response{
                 print(error?.localizedDescription ?? "Error")
                 if(showError){
@@ -99,16 +99,16 @@ class BaseViewModel {
                 }
                 onFailureOperation?()
             }
-            
+
         }).disposed(by: disposableBag)
-        
-        
+
+
     }
-    
-    
+
+
     func makeGetAPICallRx <T:Codable>(apiRequest:() -> Observable<NetworkResult<T>>,successHandler:PublishSubject<T>,showLoading:Bool = true,onSuccessOperation:((T) -> ())? = nil
                                       ,showError:Bool = true,onFailureOperation: (() -> () )? = nil,handleFailureOperation:((T) -> () )? = nil ,handleLoading:PublishSubject<Bool>? = nil,apiName:FeaturesTrackerName? = nil,apiErrorName:FeaturesTrackerName? = nil){
-        
+
         let startDate = Date()
         if let handleLoadingCustom = handleLoading {
             handleLoadingCustom.onNext(true)
@@ -117,8 +117,8 @@ class BaseViewModel {
                 self.isLoading.onNext(true)
             }
         }
-        
-        
+
+
         apiRequest().subscribe(onNext: { response in
             if let handleLoadingCustom = handleLoading {
                 handleLoadingCustom.onNext(false)
@@ -129,7 +129,7 @@ class BaseViewModel {
             }
             let executionTime = Date().timeIntervalSince(startDate)
             let time = executionTime.stringFromTimeInterval()
-            
+
             if case let .success(data) = response {
                 successHandler.onNext(data)
                 onSuccessOperation?(data)
@@ -146,7 +146,7 @@ class BaseViewModel {
                         self.error.onNext(errorMessage)
                         onFailureOperation?()
                     }
-                    
+
                 }
                 if let title = apiErrorName{
                     self.monitorApiCalls(title: title, message: time,error: errorMessage)
@@ -161,19 +161,19 @@ class BaseViewModel {
                 }
                 onFailureOperation?()
             }
-            
+
         }).disposed(by: disposableBag)
-        
-        
+
+
     }
-    
+
     func monitorApiCalls( title:FeaturesTrackerName, message:String,error:String = "") {
         let request = TrackAPIModelRequest(publicKey: FlutterwaveConfig.sharedConfig().publicKey, language: "Swift v3  \(RaveConstants.flutterWaveVersion)", version: "v3", title: "\(title.rawValue) \(error)", message: message)
         BaseViewModel.baseRepo.makeBackgroundNetworkPostRequestRx(endPoint: MonitorAPIService.monitor, request: request, response: TrackAPIModelResponse.self, successCondition: { response in
             response.status == "00"
         })
     }
-    
+
 }
 
 
@@ -184,5 +184,5 @@ enum TransactionSource {
     case rwandaMoney
     case zambiaMoney
     case francophoneMoney
-    
+
 }
