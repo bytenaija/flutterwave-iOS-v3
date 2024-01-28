@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
     TODO: Add long description of the pod here.
     DESC
 
-    s.homepage         = 'https://github.com/Flutterwave/FlutterwaveSDK'
-    s.screenshots     = 'https://github.com/Flutterwave/FlutterwaveSDK/blob/master/FlutterwaveSDK/Assets/Assets.xcassets/FlutterwaveScreenshot.imageset/FlutterwaveScreenshot.png'
+    s.homepage         = 'https://github.com/bytenaija/flutterwave-iOS-v3'
+    s.screenshots     = 'https://github.com/bytenaija/flutterwave-iOS-v3/blob/master/FlutterwaveSDK/Assets/Assets.xcassets/FlutterwaveScreenshot.imageset/FlutterwaveScreenshot.png'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
     s.author           = { 'Flutterwave Developers' => 'developers@flutterwavego.com' }
-    s.source           = { :git => 'https://github.com/Flutterwave/FlutterwaveSDK.git', :tag => '1.2.7'}
+    s.source           = { :git => 'https://github.com/bytenaija/flutterwave-iOS-v3.git', :tag => '1.2.7'}
     s.social_media_url = 'https://twitter.com/FlutterwaveEng'
 
     s.ios.deployment_target = '11.0'
