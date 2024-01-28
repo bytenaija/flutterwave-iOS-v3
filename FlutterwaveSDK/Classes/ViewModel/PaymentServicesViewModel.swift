@@ -12,9 +12,9 @@ import RxSwift
 import Swinject
 
 class PaymentServicesViewModel: BaseViewModel{
-    
+
     static let sharedViewModel: PaymentServicesViewModel = Container.sharedContainer.resolve(PaymentServicesViewModel.self)!
-    
+
     let paymentServicesRepository: PaymentServicesRepository
     let moveToPin = PublishSubject<String>()
     let moveToOTP = PublishSubject<ChargeCardResponse>()
@@ -32,8 +32,8 @@ class PaymentServicesViewModel: BaseViewModel{
     init(paymentServicesRepository: PaymentServicesRepository){
         self.paymentServicesRepository = paymentServicesRepository
     }
-    
-    
+
+
     func chargeCard(client: String) {
         let request = ChargeCardRequest(client: client)
         makeAPICallRx(request: request, apiRequest: paymentServicesRepository.chargeCard(request:), successHandler: chargeCardResponse,onSuccessOperation: {response in
@@ -50,19 +50,22 @@ class PaymentServicesViewModel: BaseViewModel{
             default:
                 break
             }
-            
+
         },apiName: .initCardCharge,apiErrorName: .initCardChargeError)
     }
-    
+
     func validateCharge(otp: String, flwRef: String, type:String) {
         let request = ValidateChargeRequest(otp: otp, flwRef:flwRef, type:type)
         makeAPICallRx(request: request, apiRequest: paymentServicesRepository.validateCharge(request:), successHandler: validateCharge,onSuccessOperation: { response in
             self.flwRef = response.data?.flwRef ?? ""
             PaymentServicesViewModel.sharedViewModel.mpesaVerify(flwRef: PaymentServicesViewModel.sharedViewModel.flwRef)
-        }, apiName: .accountChargeValidate, apiErrorName: .accountChargeValidateError) 
+        }, apiName: .accountChargeValidate, apiErrorName: .accountChargeValidateError)
     }
-    
-    
+
+    func showErrorAndReturn(errorMessage:String,flwRef:String?,source:TransactionSource?){
+        self.error.onNext(errorMessage)
+    }
+
     func mpesaVerify(flwRef: String) {
         self.isLoading.onNext(true)
         let request = MpesaVerifyRequest(flwRef:flwRef)
@@ -84,8 +87,8 @@ class PaymentServicesViewModel: BaseViewModel{
             CardViewModel.sharedViewModel.saveCard = false
         }, apiName: .accountVerify, apiErrorName: .accountChargeValidateError)
     }
-    
-    
+
+
     private func handleRetry(currentRetryCount:Int,flwRef:String){
         let seconds = 10.0
         let maxRetryCount = 10
@@ -96,17 +99,17 @@ class PaymentServicesViewModel: BaseViewModel{
                 self.pendingTransactionAlert.onNext("Your transaction is still pending try again")
             }else{
                 self.isLoading.onNext(false)
-               
+
                 PaymentServicesViewModel.sharedViewModel.retryCount = 0
                 self.pendingTransactionAlert.onNext("Your transaction is still pending try again")
-                
+
             }
         }
     }
-    
-    
-    
-    
+
+
+
+
     func pwbtVerify(txRef: String){
         self.isLoading.onNext(true)
         let request = PwbtVerifyRequest(txRef:txRef)
@@ -124,7 +127,7 @@ class PaymentServicesViewModel: BaseViewModel{
             }
         }, apiName: .bankTransfer, apiErrorName: .bankTransferError)
     }
-    
+
     private func handleRetryPwbtVerify(currentRetryCount:Int,txRef:String){
         let seconds = 10.0
         let maxRetryCount = 10
@@ -140,7 +143,7 @@ class PaymentServicesViewModel: BaseViewModel{
             }
         }
     }
-    
+
 }
 
 enum PaymentState:String {
@@ -151,7 +154,7 @@ enum PaymentState:String {
 }
 
 extension MpesaVerifyResponse{
-    
+
     func getStatus() -> PaymentState{
         let status = self.data?.status ?? "failed"
         switch status {
@@ -172,7 +175,7 @@ extension MpesaVerifyResponse{
 
 
 extension PwbtVerifyResponse{
-    
+
     func getStatus() -> PaymentState{
         let status = self.data?.status ?? "failed"
         switch status {
