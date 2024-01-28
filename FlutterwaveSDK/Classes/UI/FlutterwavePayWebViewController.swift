@@ -11,7 +11,7 @@ import WebKit
 import RxSwift
 protocol  FlutterwavePayWebProtocol : class{
     func transactionSuccessful(flwRef:String,responseData:FlutterwaveDataResponse?)
-
+    func transactionFailed(flwRef:String?,responseData:FlutterwaveDataResponse?)
 }
 
 class RavePayWebViewController: UIViewController, WKNavigationDelegate,WKUIDelegate {
