@@ -111,7 +111,7 @@ class FlutterwaveAccountClient {
             let isInternetBanking = (self.isInternetBanking) == true ? 1 : 0
             var country :String = ""
             switch FlutterwaveConfig.sharedConfig().currencyCode {
-            case "KES","TZS","GHS","ZAR":
+            case "KES","TZS","GHS","ZAR", "RWF":
                 country = FlutterwaveConfig.sharedConfig().country
             default:
                 country = "NG"

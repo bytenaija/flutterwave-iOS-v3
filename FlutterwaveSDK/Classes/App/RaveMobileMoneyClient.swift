@@ -69,12 +69,12 @@ class FlutterwaveMobileMoneyClient {
 //        }
 //        }
 //    }
-    
+
     //MARK: Charge
 //    public func chargeMobileMoney(_ type:MobileMoneyType = .ghana){
 //        var country :String = ""
 //        switch RaveConfig.sharedConfig().currencyCode {
-//                   case "KES","TZS","GHS","ZAR":
+//                   case "KES","TZS","GHS","ZAR", "RWF":
 //                       country = RaveConfig.sharedConfig().country
 //                   default:
 //                       country = "NG"

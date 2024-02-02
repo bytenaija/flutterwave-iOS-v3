@@ -46,20 +46,20 @@ class FlutterwaveMpesaClient {
 //                    }
 //                }
 //            }, errorCallback: { (err) in
-//                
+//
 //                self.error?(err,nil)
 //            })
 //        }else{
 //            self.error?("Public Key is not specified",nil)
 //        }
 //    }
-    
+
     //MARK: Charge
     public func chargeMpesa(){
         if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{
             var country :String = ""
             switch FlutterwaveConfig.sharedConfig().currencyCode {
-            case "KES","TZS","GHS","ZAR":
+            case "KES","TZS","GHS","ZAR", "RWF":
                 country = FlutterwaveConfig.sharedConfig().country
             default:
                 country = "NG"

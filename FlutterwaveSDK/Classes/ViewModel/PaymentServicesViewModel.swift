@@ -62,7 +62,7 @@ class PaymentServicesViewModel: BaseViewModel{
         }, apiName: .accountChargeValidate, apiErrorName: .accountChargeValidateError)
     }
 
-    func showErrorAndReturn(errorMessage:String,flwRef:String?,source:TransactionSource?){
+    func showErrorAndReturn(errorMessage:String){
         self.error.onNext(errorMessage)
     }
 

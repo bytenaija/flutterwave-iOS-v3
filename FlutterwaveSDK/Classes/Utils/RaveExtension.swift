@@ -15,7 +15,7 @@ struct AnchoredConstraints {
 
 enum Style{
     case  success , error
-    
+
 }
 func showSnackBarWithMessage(msg: String, style:Style = .success,autoComplete:Bool = false, completion:(()-> Void)? = nil){
     if autoComplete{
@@ -26,14 +26,14 @@ func showSnackBarWithMessage(msg: String, style:Style = .success,autoComplete:Bo
     let message =  msg
     let snack = SnackBar.shared
     snack.message = message
-    
+
     switch style{
     case .success:
         snack.statusColor = UIColor(hex: "#397A7F")
     case .error:
         snack.statusColor = UIColor(hex: "#9C4A47")
     }
-    
+
     snack.show()
 }
 
@@ -45,7 +45,7 @@ public class SubAccount{
     public let ratio:Double?
     public let charge_type:SubAccountChargeType?
     public let charge:Double?
-    
+
     public init(id:String , ratio:Double?, charge_type:SubAccountChargeType? ,charge:Double?) {
         self.id = id
         self.ratio = ratio
@@ -58,13 +58,13 @@ public class SubAccount{
 func MD5(string: String) -> Data? {
     guard let messageData = string.data(using:String.Encoding.utf8) else { return nil }
     var digestData = Data(count: Int(CC_MD5_DIGEST_LENGTH))
-    
+
     _ = digestData.withUnsafeMutableBytes {digestBytes in
         messageData.withUnsafeBytes {messageBytes in
             CC_MD5(messageBytes, CC_LONG(messageData.count), digestBytes)
         }
     }
-    
+
     return digestData
 }
 
@@ -72,9 +72,9 @@ func MD5(string: String) -> Data? {
  func getEncryptionKey(_ secretKey:String)->String {
     let md5Data = MD5(string:secretKey)
     let md5Hex =  md5Data!.map { String(format: "%02hhx", $0) }.joined()
-    
+
     var secretKeyHex = ""
-    
+
     if secretKey.contains("FLWSECK-") {
         secretKeyHex = secretKey.replacingOccurrences(of: "FLWSECK-", with: "")
     }
@@ -85,10 +85,10 @@ func MD5(string: String) -> Data? {
     secretKeyHex = secretKey.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
     let index = secretKeyHex.index(secretKeyHex.startIndex, offsetBy: 12)
     let first12 = secretKeyHex.substring(to: index)
-    
+
     let last12 = md5Hex.substring(from:md5Hex.index(md5Hex.endIndex, offsetBy: -12))
     return first12 + last12
-    
+
 }
 
 func getIFAddresses() -> [String] {
@@ -136,14 +136,14 @@ extension String{
 			return Locale(identifier: "ak_GH")
 		case "ZAR":
 			return Locale(identifier: "en_ZA")
-		case "UGX":
-			return Locale(identifier: "nyn_UG")
+		case "RWF":
+            return Locale(identifier: "rw_RW")
 		default:
 			let locales: [String] = NSLocale.availableLocaleIdentifiers
 			let loc = locales.map { (item) -> Locale in
 				return Locale(identifier: item)
 			}
-			
+
 			let current = loc.filter { (item) -> Bool in
 				if let it = item.currencyCode{
 					return it == code
@@ -152,7 +152,7 @@ extension String{
 				}
 			}.first
 			return current ?? Locale.current
-			
+
 		}
     }
 	func toRaveCurrency(_ withFraction:Int = 0, locale:Locale = Locale.current) -> String{
@@ -179,7 +179,7 @@ extension String{
                 return nil
             }
     }
-        
+
     func lastIndex(of target: String) -> Int? {
             if let range = self.range(of: target, options: .backwards) {
                 return self.distance(from: startIndex, to: range.lowerBound)
@@ -192,7 +192,7 @@ extension String{
         str = self.toRaveCurrency(fraction, locale: getLocale(code: code))
         return str
     }
-    
+
 }
 
 public extension Dictionary{
@@ -209,10 +209,10 @@ public extension Dictionary{
             catch
             {
             }
-        
+
         return str
     }
-    
+
     mutating func merge<K, V>(_ dict: [K: V]){
         for (k, v) in dict {
             self.updateValue(v as! Value, forKey: k as! Key)

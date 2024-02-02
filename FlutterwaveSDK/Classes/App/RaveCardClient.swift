@@ -63,7 +63,7 @@ class FlutterwaveCardClient{
         if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{
             var country :String = ""
             switch FlutterwaveConfig.sharedConfig().currencyCode {
-            case "KES","TZS","GHS","ZAR":
+            case "KES","TZS","GHS","ZAR", "RWF":
                 country = FlutterwaveConfig.sharedConfig().country
             default:
                 country = "NG"
@@ -228,7 +228,7 @@ class FlutterwaveCardClient{
         if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{
             var country :String = ""
             switch FlutterwaveConfig.sharedConfig().currencyCode {
-            case "KES","TZS","GHS","ZAR":
+            case "KES","TZS","GHS","ZAR", "RWF":
                 country = FlutterwaveConfig.sharedConfig().country
             default:
                 country = "NG"

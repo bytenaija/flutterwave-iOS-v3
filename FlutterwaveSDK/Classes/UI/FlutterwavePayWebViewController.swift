@@ -113,7 +113,7 @@ class RavePayWebViewController: UIViewController, WKNavigationDelegate,WKUIDeleg
 
                 } catch(let error) {
                     print("\(error.localizedDescription)")
-                    PaymentServicesViewModel.sharedViewModel.showErrorAndReturn(error.localizedDescription)
+                     PaymentServicesViewModel.sharedViewModel.showErrorAndReturn(errorMessage: error.localizedDescription)
                 }
     //            print("Extra PayData \(products)")
 
