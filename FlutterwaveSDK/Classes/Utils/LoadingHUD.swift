@@ -83,7 +83,7 @@ class LoadingHUD: UIView {
             blurView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         }
 
-        animation = AnimationView(name: animationFile)
+        animation = LottieAnimationView(name: animationFile)
         animation.loopMode = .loop
         animation.translatesAutoresizingMaskIntoConstraints = false
         addSubview(animation)
