@@ -60,7 +60,7 @@ class RavePayWebViewController: UIViewController, WKNavigationDelegate,WKUIDeleg
         PaymentServicesViewModel.sharedViewModel.error.observeOn(MainScheduler.instance).subscribe(onNext: { error in
             self.progressView.removeFromSuperview()
             showSnackBarWithMessage(msg: error )
-            self.delegate?.transactionFailed()
+            self.delegate?.transactionFailed(nil, nil)
         } ).disposed(by: diposableBag)
     }
 

@@ -24,11 +24,11 @@ class FlutterwaveMpesaClient {
     public var chargePending: PendingHandler?
     public var businessNumber:String?
     public var accountNumber:String?
-    
+
     //MARK: Transaction Fee
 //    public func getFee(){
 //        if let pubkey = FlutterwaveConfig.sharedConfig().publicKey{
-//            
+//
 //            let param = [
 //                "PBFPubKey": pubkey,
 //                "amount": amount!,
@@ -104,22 +104,22 @@ class FlutterwaveMpesaClient {
                             }
                         }
                     }
-                    
+
                     return dict
                 }
                 param.merge(["subaccounts":subAccountDict])
             }
-          
-            
+
+
             MobileMoneyViewModel.sharedViewModel.mpesaMoney(amount: amount!, phoneNumber: phoneNumber ?? "")
-            
-            
-            
+
+
+
         }
     }
-    
 
-    
-    
-    
+
+
+
+
 }

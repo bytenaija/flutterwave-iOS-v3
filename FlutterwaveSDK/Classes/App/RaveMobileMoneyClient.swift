@@ -37,7 +37,7 @@ class FlutterwaveMobileMoneyClient {
     public var chargePending: PendingHandler?
     public var chargeWebAuth: WebAuthHandler?
     public var mobileMoneyType:MobileMoneyType = .ghana
-    
+
     //MARK: Get transaction Fee
 //    public func getFee(){
 //        if FlutterwaveConfig.sharedConfig().currencyCode == "GHS" || FlutterwaveConfig.sharedConfig().currencyCode == "UGX"
@@ -61,7 +61,7 @@ class FlutterwaveMobileMoneyClient {
 //                    }
 //                }
 //            }, errorCallback: { (err) in
-//                
+//
 //                self.error?(err,nil)
 //            })
 //        }else{
@@ -130,12 +130,12 @@ class FlutterwaveMobileMoneyClient {
 //                            }
 //                        }
 //                    }
-//                    
+//
 //                    return dict
 //                }
 //                param.merge(["subaccounts":subAccountDict])
 //            }
-//            
+//
 //            if let _voucher = self.voucher , _voucher != ""{
 //                param.merge(["voucher":_voucher])
 //            }
@@ -143,7 +143,7 @@ class FlutterwaveMobileMoneyClient {
 //            let secret = RaveConfig.sharedConfig().encryptionKey!
 //            let data =  TripleDES.encrypt(string: jsonString, key:secret)
 //            let base64String = data?.base64EncodedString()
-//            
+//
 //            let reqbody = [
 //                "PBFPubKey": pubkey,
 //                "client": base64String!, // Encrypted $data payload here.
@@ -163,7 +163,7 @@ class FlutterwaveMobileMoneyClient {
 //								switch chargeResponse{
 //								case "00":
 //									self.chargeSuccess?(flwTransactionRef!,res)
-//									
+//
 //								case "02":
 //									if let authURL = result?["authurl"] as? String, authURL != "NO-URL", authURL != "N/A" {
 //										// Show Web View
@@ -171,27 +171,27 @@ class FlutterwaveMobileMoneyClient {
 //										if let txRef = result?["flwRef"] as? String{
 //											self.queryMpesaTransaction(txRef: txRef)
 //										}
-//										
+//
 //									}else{
-//										
+//
 //										if let type =  result?["paymentType"] as? String,let currency = result?["currency"] as? String {
 //											print(type)
 //											if (type.containsIgnoringCase(find: "mpesa") || type.containsIgnoringCase(find: "mobilemoneygh") || type.containsIgnoringCase(find: "mobilemoneyzm") ||  currency.containsIgnoringCase(find: "UGX")) {
 //												if let status =  result?["status"] as? String{
 //													if (status.containsIgnoringCase(find: "pending")){
-//														
+//
 //														self.chargePending?("Transaction Processing","A push notification has been sent to your phone, please complete the transaction by entering your pin.\n Please do not close this page until transaction is completed")
 //														if let txRef = result?["flwRef"] as? String{
 //															self.queryMpesaTransaction(txRef: txRef)
 //														}
-//														
-//														
+//
+//
 //													}
 //												}
 //											}
 //										}
 //									}
-//									
+//
 //								default:
 //									break
 //								}
@@ -204,16 +204,16 @@ class FlutterwaveMobileMoneyClient {
 //                        }
 //                    }
 //                }
-//                
-//                
+//
+//
 //            }, errorCallback: { (err) in
-//                
+//
 //                self.error?(err, nil)
 //            })
-//            
+//
 //        }
 //    }
-    
+
     //MARK: Requery transaction
 //    func queryMpesaTransaction(txRef:String?){
 //        if let secret = RaveConfig.sharedConfig().publicKey ,let  ref = txRef{
@@ -228,7 +228,7 @@ class FlutterwaveMobileMoneyClient {
 //                                switch chargeCode{
 //                                case "00":
 //                                    self.chargeSuccess?(flwRef,result)
-//                                    
+//
 //                                default:
 //                                    self.queryMpesaTransaction(txRef: ref)
 //                                }
@@ -241,16 +241,16 @@ class FlutterwaveMobileMoneyClient {
 //                    }
 //                }
 //            }, errorCallback: { (err) in
-//                
+//
 //                if (err.containsIgnoringCase(find: "serialize") || err.containsIgnoringCase(find: "JSON")){
 //                    self.error?("Request Timed Out",nil)
 //                }else{
 //                    self.error?(err,nil)
 //                }
-//                
+//
 //            })
 //        }
 //    }
-    
-    
+
+
 }
